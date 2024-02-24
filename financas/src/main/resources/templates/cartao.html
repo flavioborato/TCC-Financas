@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-br">
+<head th:replace="~{base/base :: head}">
+		<!--  template  head  está na pasta base/base.html -->
+</head>
+ 
+<body>
+  <div th:replace="~{base/base :: logo}">
+				<!-- template  logo  está na pasta base/base.html - -->
+  </div>
+  
+  	<div th:replace="~{base/base :: titulo('CADASTRO DE CARTÃO')}" >
+				<!-- template  titulo  está na pasta base/base.html --->
+	</div>
+  
+  	<main class="container">
+		    
+		<div class=" mb-5" >
+			<form class=" mb-3"  method="POST">
+			    
+			        
+			    
+					<fieldset>
+						<label for="numerocartao" class="form-label">Numero</label>
+						<input type="number"  id="numerocartao" class="form-control" placeholder="DIGITE O NUMERO FINAL DO CARTÃO" />
+					</fieldset>
+					
+					<fieldset>
+						<label for="validade" class="form-label">Validade</label>
+						<input type="date"  id="validade" class="form-control" placeholder="0" />
+					</fieldset>					
+
+
+			        <fieldset>
+							<label for="tipo" class="form-label">Tipo</label>
+							<br>
+							<select  id="tipo" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option selected>Open this select menu</option>
+							    <option>Opção 1</option>
+							    <option>Opção 2</option>
+							    <option>Opção 3</option>
+							</select>
+					</fieldset>
+
+
+			        <fieldset>
+							<label for="pessoa" class="form-label">Pessoa</label>
+							<br>
+							<select  id="pessoa" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option selected>Open this select menu</option>
+							    <option>Opção 1</option>
+							    <option>Opção 2</option>
+							    <option>Opção 3</option>
+							</select>
+					</fieldset>
+					
+					<br/>
+					
+					<button type="submit" class="btn btn-success">Salvar</button>
+					<a class="btn btn-secondary" href="" role="button">Cancelar</a>
+									
+					
+				</form>  
+	</div>
+		    
+		<div>    
+	    <table class="table table-striped table-hover">
+		    <thead>
+		        <tr>
+		            <th> Numero </th>
+		            <th> Validade </th>
+		            <th> Tipo </th>
+		            <th> Pessoa </th>		           
+		            <th> Id </th>
+		            <th colspan="2"> Ações </th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr >
+		        	<td><span > Numero</span> </td>
+		            <td><span > Validade </span></td>
+		            <td><span > Tipo </span></td>
+		            <td><span > Pessoa </span></td>
+		            <td><span > Id </span></td>
+		            <td>
+		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
+		            	<form method="POST" >
+	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
+	            		</form>
+	            	</td>
+		        </tr>
+		    </tbody>
+		</table>
+		</div>    
+		
+	</main>  
+  
+  
+  
+  
+    <div th:replace="~{base/base :: rodape}" >
+				<!-- template  rodapé  está na pasta base/base.html - -->
+	</div>
+</body>
+</html>

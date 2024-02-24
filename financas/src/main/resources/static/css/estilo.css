@@ -1,0 +1,32 @@
+.Titulo{
+		background-color: #47bcff;
+		color: rgb(0, 0, 0);
+		font-size: 1.2rem;
+		font-family: 'Handlee', inherit;
+}
+.logo-container {
+		background-color: rgb(105, 220, 203);
+		color: rgb(0, 0, 0);
+	}
+	
+.logo {
+		font-family: 'Handlee', cursive;
+		font-size: 2rem;
+	}
+.logoinout {
+		font-family: 'Handlee', monospace;
+		font-size: 1rem;
+		color: rgb(0, 0, 0);
+	}
+.logonav {
+		font-family: 'Handlee', sans-serif;
+		font-size: 1rem;
+		color: rgb(0, 0, 0);
+	}
+
+.ulLink{
+	
+	list-style: none;
+	font-size: 1rem;
+}
+

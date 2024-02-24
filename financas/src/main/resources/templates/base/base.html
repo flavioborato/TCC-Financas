@@ -1,0 +1,66 @@
+
+<head th:fragment="head">
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="shortcut icon" th:href="@{/icon/favicon.ico}" >
+  	<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}"> 
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+		crossorigin="anonymous">	
+</head>
+
+<div th:fragment="logo" >
+	
+		<div class="logo-container mb-3 p-2 d-flex justify-content-between">	
+				<span class="logo ml-5 p-2">Finanças</span> 
+				
+				<ul class="d-flex flex-row ulLink ">
+					<li sec:authorize="isAuthenticated()" class="p-2">
+						<span class="nav-link" sec:authentication="principal.username">Usuário</span>
+					</li>
+					<li sec:authorize="isAnonymous()" class="p-2">
+						<a class="text-reset nav-link"  href="/login">Login</a>
+					</li>
+					<li sec:authorize="isAuthenticated()" class="p-2">
+						<a onclick="document.querySelector('#form-login').submit()" class="text-reset nav-link" href="/login">Logout</a>
+					</li>
+					<form id="form-login" th:action="@{/logout}" method="post"></form>					
+				</ul>
+				
+		</div>	
+	
+	 
+	 
+	<div class="mb-0">
+		<div class="col">
+			<nav class="nav">
+			  <a class="logonav nav-link" th:href="@{/consultas}">Consultas</a>
+			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/pessoas}">Cadastro Pessoa</a>
+			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/cartao}">Cadastro Cartão</a>
+			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/renda}">Cadastro Renda</a>
+			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/gastosmensais}">Cadastro Gastos Mensais</a>
+			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/gastosdecartao}">Cadastro Gastos Cartão</a>
+			</nav>
+		</div>
+	</div>
+	
+</div>
+
+<div th:fragment="titulo(valor)" class="jumbotron mb-0">
+	<h1 class="Titulo mb-3 p-2 d-flex justify-content-center" th:text="${valor}"></h1>
+</div>
+
+
+<div th:fragment="rodape" class="jumbotron mb-0">
+<footer style="margin-top: 20px;">
+	<main class="container text-center border-top" >
+		<p>Desenvolvido por <a href="">Flávio Fernando Borato</a>.</p>
+		<ul class="ulLink" >
+	      <a href="https://www.linkedin.com/in/flavio-borato" rel="next" target="_blank" > <li> <img src="/icon/icone-linkedin.png" alt="Linkedin"> LINKEDIN </li> </a>
+	      <a href="https://github.com/flavioborato" rel="next" target="_blank" > <li> <img src="/icon/icone-github.png" alt="Github"> GITHUB </li>  </a>
+	    </ul>
+	</main>
+</footer>
+</div>
