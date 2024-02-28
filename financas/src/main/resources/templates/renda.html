@@ -63,11 +63,11 @@
 		        </tr>
 		    </thead>
 		    <tbody>
-		        <tr >
-		            <td><span > Valor </span></td>
-		            <td><span > Descrição </td>
-		            <td><span > Pessoa </span></td>
-		            <td><span > Id </span></td>
+		        <tr th:each="renda : ${rendas}" >
+		            <td><span th:text="${renda.valor}"> Valor </span></td>
+		            <td><span th:text="${renda.descricao}"> Descrição </td>
+		            <td><span th:text="${renda.pessoa.nome}"> Pessoa </span></td>
+		            <td><span th:text="${renda.idrenda}"> Id </span></td>
 		            <td>
 		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
 		            	<form method="POST" >

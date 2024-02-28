@@ -110,16 +110,16 @@
 		        </tr>
 		    </thead>
 		    <tbody>
-		        <tr >
-		        	<td><span > Tipo de Pagamento</span> </td>
-		            <td><span > Data da Compra </span></td>
-		            <td><span > Valor </span></td>
-		            <td><span > Descrição </td>
-		            <td><span > Tipo de Gasto </span></td>
-		            <td><span > Area </span></td>
-		            <td><span > Mês </span></td>
-		            <td><span > Pessoa </span></td>
-		            <td><span > Id </span></td>
+		        <tr  th:each="gastosmensal : ${gastosmensais}">
+		        	<td><span  th:text="${gastosmensal.tipo_pagamento}"> Tipo de Pagamento</span> </td>
+		            <td><span th:text="${gastosmensal.data_compra}"> Data da Compra </span></td>
+		            <td><span th:text="${gastosmensal.valor}"> Valor </span></td>
+		            <td><span th:text="${gastosmensal.descricao}"> Descrição </td>
+		            <td><span th:text="${gastosmensal.tipo_gasto}"> Tipo de Gasto </span></td>
+		            <td><span th:text="${gastosmensal.area}"> Area </span></td>
+		            <td><span th:text="${gastosmensal.mes.month} + - ${gastosmensal.mesyear}"> Mês </span></td>
+		            <td><span th:text="${gastosmensal.pessoa.nome}"> Pessoa </span></td>
+		            <td><span th:text="${gastosmensal.idgastos_mensais}"> Id </span></td>
 		            <td>
 		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
 		            	<form method="POST" >
