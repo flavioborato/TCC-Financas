@@ -86,7 +86,7 @@
 					<br/>
 					
 					<button type="submit" class="btn btn-success">Salvar</button>
-					<a class="btn btn-secondary" href="" role="button">Cancelar</a>
+					<a class="btn btn-secondary" href="/gastosmensais" role="button">Cancelar</a>
 									
 					
 				</form>  
@@ -111,18 +111,18 @@
 		    </thead>
 		    <tbody>
 		        <tr  th:each="gastosmensal : ${gastosmensais}">
-		        	<td><span  th:text="${gastosmensal.tipo_pagamento}"> Tipo de Pagamento</span> </td>
-		            <td><span th:text="${gastosmensal.data_compra}"> Data da Compra </span></td>
+		        	<td><span  th:text="${gastosmensal.tipopagamento}"> Tipo de Pagamento</span> </td>
+		            <td><span th:text="${gastosmensal.datacompra}"> Data da Compra </span></td>
 		            <td><span th:text="${gastosmensal.valor}"> Valor </span></td>
 		            <td><span th:text="${gastosmensal.descricao}"> Descrição </td>
-		            <td><span th:text="${gastosmensal.tipo_gasto}"> Tipo de Gasto </span></td>
+		            <td><span th:text="${gastosmensal.tipogasto}"> Tipo de Gasto </span></td>
 		            <td><span th:text="${gastosmensal.area}"> Area </span></td>
-		            <td><span th:text="${gastosmensal.mes.month} + - ${gastosmensal.mesyear}"> Mês </span></td>
+		            <td><span th:text="${gastosmensal.mes.month} + - ${gastosmensal.mes.year}"> Mês </span></td>
 		            <td><span th:text="${gastosmensal.pessoa.nome}"> Pessoa </span></td>
-		            <td><span th:text="${gastosmensal.idgastos_mensais}"> Id </span></td>
+		            <td><span th:text="${gastosmensal.idgastosmensais}"> Id </span></td>
 		            <td>
 		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
-		            	<form method="POST" >
+		            	<form method="POST" th:action="@{/gastosmensais/{id}/excluir(id=${gastosmensal.idgastosmensais})}"  >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>
 	            	</td>

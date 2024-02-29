@@ -96,7 +96,7 @@
 					<br/>
 					
 					<button type="submit" class="btn btn-success">Salvar</button>
-					<a class="btn btn-secondary" href="" role="button">Cancelar</a>
+					<a class="btn btn-secondary" href="/gastosdecartao" role="button">Cancelar</a>
 									
 					
 				</form>  
@@ -123,18 +123,18 @@
 		    <tbody>
 		        <tr th:each="gastoscartao : ${gastoscartoes}" >
 		        	<td><span th:text="${gastoscartao.parcelas}"> Parcelas</span> </td>
-		            <td><span th:text="${gastoscartao.data_compra}"> Data da Compra </span></td>
+		            <td><span th:text="${gastoscartao.datacompra}"> Data da Compra </span></td>
 		            <td><span th:text="${gastoscartao.valor}"> Valor </span></td>
 		            <td><span th:text="${gastoscartao.descricao}"> Descrição </td>
-		            <td><span th:text="${gastoscartao.tipo_gasto}"> Tipo de Gasto </span></td>
+		            <td><span th:text="${gastoscartao.tipogasto}"> Tipo de Gasto </span></td>
 		            <td><span th:text="${gastoscartao.area}"> Area </span></td>
-		            <td><span th:text="${gastoscartao.mes.month} + - ${cartao.mes.year}"> Mês </span></td>
+		            <td><span th:text="${gastoscartao.mes.month} + - ${gastoscartao.mes.year}"> Mês </span></td>
 		            <td><span th:text="${gastoscartao.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${gastoscartao.cartao.numero}"> Cartão </span></td>
-		            <td><span th:text="${gastoscartao.idgastos_cartao}"> Id </span></td>
+		            <td><span th:text="${gastoscartao.idgastoscartao}"> Id </span></td>
 		            <td>
 		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
-		            	<form method="POST" >
+		            	<form method="POST" th:action="@{/gastosdecartao/{id}/excluir(id=${gastoscartao.idgastoscartao})}"  >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>
 	            	</td>

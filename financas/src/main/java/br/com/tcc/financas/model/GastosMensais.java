@@ -26,15 +26,15 @@ public class GastosMensais {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idgastos_mensais;
+	private Long idgastosmensais;
 	@Enumerated(EnumType.STRING)
-	private TipoPagamento tipo_pagamento;
+	private TipoPagamento tipopagamento;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate data_compra;
+	private LocalDate datacompra;
 	private BigDecimal valor;
 	private String descricao;
 	@Enumerated(EnumType.STRING)
-	private TipoGasto tipo_gasto;
+	private TipoGasto tipogasto;
 	@Enumerated(EnumType.STRING)
 	private AreaGasto area;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -46,23 +46,23 @@ public class GastosMensais {
 	
 	
 	//Getters and Setters
-	public Long getIdgastos_mensais() {
-		return idgastos_mensais;
+	public Long getIdgastosmensais() {
+		return idgastosmensais;
 	}
-	public void setIdgastos_mensais(Long idgastos_mensais) {
-		this.idgastos_mensais = idgastos_mensais;
+	public void setIdgastosmensais(Long idgastosmensais) {
+		this.idgastosmensais = idgastosmensais;
 	}
-	public TipoPagamento getTipo_pagamento() {
-		return tipo_pagamento;
+	public TipoPagamento getTipopagamento() {
+		return tipopagamento;
 	}
-	public void setTipo_pagamento(TipoPagamento tipo_pagamento) {
-		this.tipo_pagamento = tipo_pagamento;
+	public void setTipopagamento(TipoPagamento tipopagamento) {
+		this.tipopagamento = tipopagamento;
 	}
-	public LocalDate getData_compra() {
-		return data_compra;
+	public LocalDate getDatacompra() {
+		return datacompra;
 	}
-	public void setData_compra(LocalDate data_compra) {
-		this.data_compra = data_compra;
+	public void setDatacompra(LocalDate datacompra) {
+		this.datacompra = datacompra;
 	}
 	public BigDecimal getValor() {
 		return valor;
@@ -76,11 +76,11 @@ public class GastosMensais {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public TipoGasto getTipo_gasto() {
-		return tipo_gasto;
+	public TipoGasto getTipogasto() {
+		return tipogasto;
 	}
-	public void setTipo_gasto(TipoGasto tipo_gasto) {
-		this.tipo_gasto = tipo_gasto;
+	public void setTipogasto(TipoGasto tipogasto) {
+		this.tipogasto = tipogasto;
 	}
 	public AreaGasto getArea() {
 		return area;

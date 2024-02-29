@@ -25,14 +25,14 @@ public class GastosCartao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idgastos_cartao;
+	private Long idgastoscartao;
 	private Integer parcelas;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate data_compra;
+	private LocalDate datacompra;
 	private BigDecimal valor;
 	private String descricao;
 	@Enumerated(EnumType.STRING)
-	private TipoGasto tipo_gasto;
+	private TipoGasto tipogasto;
 	@Enumerated(EnumType.STRING)
 	private AreaGasto area;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -48,11 +48,11 @@ public class GastosCartao {
 	
 	
 	//Getters and Setters
-	public Long getIdgastos_cartao() {
-		return idgastos_cartao;
+	public Long getIdgastoscartao() {
+		return idgastoscartao;
 	}
-	public void setIdgastos_cartao(Long idgastos_cartao) {
-		this.idgastos_cartao = idgastos_cartao;
+	public void setIdgastoscartao(Long idgastoscartao) {
+		this.idgastoscartao = idgastoscartao;
 	}
 	public Integer getParcelas() {
 		return parcelas;
@@ -60,11 +60,11 @@ public class GastosCartao {
 	public void setParcelas(Integer parcelas) {
 		this.parcelas = parcelas;
 	}
-	public LocalDate getData_compra() {
-		return data_compra;
+	public LocalDate getDatacompra() {
+		return datacompra;
 	}
-	public void setData_compra(LocalDate data_compra) {
-		this.data_compra = data_compra;
+	public void setDatacompra(LocalDate datacompra) {
+		this.datacompra = datacompra;
 	}
 	public BigDecimal getValor() {
 		return valor;
@@ -78,11 +78,11 @@ public class GastosCartao {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public TipoGasto getTipo_gasto() {
-		return tipo_gasto;
+	public TipoGasto getTipogasto() {
+		return tipogasto;
 	}
-	public void setTipo_gasto(TipoGasto tipo_gasto) {
-		this.tipo_gasto = tipo_gasto;
+	public void setTipogasto(TipoGasto tipogasto) {
+		this.tipogasto = tipogasto;
 	}
 	public AreaGasto getArea() {
 		return area;

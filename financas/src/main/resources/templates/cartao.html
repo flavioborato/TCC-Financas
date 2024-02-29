@@ -57,7 +57,7 @@
 					<br/>
 					
 					<button type="submit" class="btn btn-success">Salvar</button>
-					<a class="btn btn-secondary" href="" role="button">Cancelar</a>
+					<a class="btn btn-secondary" href="/cartao" role="button">Cancelar</a>
 									
 					
 				</form>  
@@ -84,7 +84,7 @@
 		            <td><span th:text="${cartao.idcartao}"> Id </span></td>
 		            <td>
 		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
-		            	<form method="POST" >
+		            	<form method="POST" th:action="@{/cartao/{id}/excluir(id=${cartao.idcartao})}"  >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>
 	            	</td>

@@ -1,9 +1,11 @@
 package br.com.tcc.financas.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.tcc.financas.model.GastosCartao;
 
-public interface GastosCartaoRepository extends JpaRepository<GastosCartao, String> {
+@Repository
+public interface GastosCartaoRepository extends JpaRepository<GastosCartao, Long> {
 
 }

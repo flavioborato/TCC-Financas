@@ -45,7 +45,7 @@
 					<br/>
 					
 					<button type="submit" class="btn btn-success">Salvar</button>
-					<a class="btn btn-secondary" href="" role="button">Cancelar</a>
+					<a class="btn btn-secondary" href="/renda" role="button">Cancelar</a>
 									
 					
 				</form>  
@@ -70,7 +70,7 @@
 		            <td><span th:text="${renda.idrenda}"> Id </span></td>
 		            <td>
 		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
-		            	<form method="POST" >
+		            	<form method="POST" th:action="@{/renda/{id}/excluir(id=${renda.idrenda})}" >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>
 	            	</td>

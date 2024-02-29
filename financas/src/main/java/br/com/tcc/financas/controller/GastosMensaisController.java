@@ -1,11 +1,18 @@
 package br.com.tcc.financas.controller;
 
-import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 import br.com.tcc.financas.model.GastosMensais;
 import br.com.tcc.financas.repository.GastosMensaisRepository;
 
@@ -17,11 +24,19 @@ public class GastosMensaisController {
 	private GastosMensaisRepository gastosmensaisrepository;
 	
 	@GetMapping
-	public String gastosmensaisclass(Model model) {
+	public String listarGastosMensais(Model model) {
 		
-		List<GastosMensais> gastosmesal = gastosmensaisrepository.findAll();
-		model.addAttribute("gastosmensais", gastosmesal);
+		PageRequest paginacao = PageRequest.of(0, 200, Sort.by("idgastosmensais").descending());
+		Page<GastosMensais> gastosmesal = gastosmensaisrepository.findAll(paginacao);
+		model.addAttribute("gastosmensais", gastosmesal.getContent());
 		return "gastosmensais";
 	}
 	
+	@PostMapping("/{codigo}/excluir")
+	public ModelAndView excluirGastosMensais(@PathVariable("codigo") Long codigo) {
+		
+		gastosmensaisrepository.deleteById(codigo);
+		ModelAndView modelAndView = new ModelAndView("redirect:/gastosmensais");
+		return modelAndView;
+	}
 }

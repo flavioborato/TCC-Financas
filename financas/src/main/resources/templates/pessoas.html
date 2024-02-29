@@ -43,13 +43,13 @@
 					
 					<fieldset>
 						<label for="senha" class="form-label">Senha</label>
-						<input type="text"  id=""senha"" class="form-control" placeholder="DIGITE O NOME" />
+						<input type="text"  id=""senha"" class="form-control" placeholder="DIGITE A SENHA" />
 					</fieldset>
 					
 					<br/>
 					
 					<button type="submit" class="btn btn-success">Salvar</button>
-					<a class="btn btn-secondary" href="" role="button">Cancelar</a>
+					<a class="btn btn-secondary" href="/pessoas" role="button">Cancelar</a>
 									
 					
 				</form>  
@@ -75,7 +75,7 @@
 		            <td><span th:text="${pessoa.idpessoa}" > Id </span></td>
 		            <td>
 		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
-		            	<form method="POST" >
+		            	<form method="POST" th:action="@{/pessoas/{id}/excluir(id=${pessoa.idpessoa})}">
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>
 	            	</td>
