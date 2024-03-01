@@ -2,7 +2,7 @@ package br.com.tcc.financas.model.dados;
 
 public enum TipoGasto {
 	PESSOAL("Pessoal"),
-	FAMILIAR("familiar");
+	FAMILIAR("Familiar");
 	
 	private final String displayValue;
     

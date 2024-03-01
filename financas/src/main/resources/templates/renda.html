@@ -17,30 +17,34 @@
   	<main class="container">
 		    
 		<div class=" mb-5" >
-			<form class=" mb-3"  method="POST">
+			<form class=" mb-3" th:action="@{/renda/cadastrar}" th:object="${rendacadastro}"  method="POST">
 			    
-			        
+			        <fieldset>
+						<input type="number" hidden th:field="*{idrenda}" id="idrenda"  class="form-control" placeholder="DIGITE O NOME" />
+					</fieldset> 
 			    
 					<fieldset>
 						<label for="valor" class="form-label">Valor</label>
-						<input type="number"  id="valor" class="form-control" placeholder="DIGITE O VALOR DA RENDA" />
+						<input type="number" step="0.01" th:field="*{valor}" id="valor" class="form-control" placeholder="DIGITE O VALOR DA RENDA" />
 					</fieldset>
 					
 					<fieldset>
 						<label for="descricao" class="form-label">Descrição</label>
-						<input type="text"  id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
+						<input type="text" th:field="*{descricao}" id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
 					</fieldset>
 
 			        <fieldset>
 							<label for="pessoa" class="form-label">Pessoa</label>
-							<br>
-							<select  id="pessoa" class="form-select form-select-lg mb-3 p-2 col-lg" >
-							<option selected>Open this select menu</option>
-							    <option>Opção 1</option>
-							    <option>Opção 2</option>
-							    <option>Opção 3</option>
+							<select th:field="*{pessoa}"   id="pessoa" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option 
+								th:each="pessoalist : ${pessoas}" 
+				        		th:value="${pessoalist.idpessoa}"
+				        		th:text="${pessoalist.nome}"
+				        		th:selected="${pessoalist  == rendacadastro.pessoa}"
+							></option>							 
 							</select>
 					</fieldset>
+
 					
 					<br/>
 					

@@ -17,83 +17,82 @@
 		
 		
 		<div class=" mb-5" >
-			<form class=" mb-3"  method="POST">
-			    
+			<form class=" mb-3" th:action="@{/gastosdecartao/cadastrar}" th:object="${gastocartaocadastro}" method="POST">
+			   		 <fieldset>
+						<input type="number" hidden th:field="*{idgastoscartao}" id="idgastoscartao"  class="form-control" placeholder="DIGITE O NOME" />
+					</fieldset> 
+					
 			        <fieldset>
 							<label for="parcelas" class="form-label">Parcelas</label>
-							<br>
-							<select  id="parcelas" class="form-select form-select-lg mb-3 p-2 col-lg" >
-								<option selected>Open this select menu</option>
-							    <option>Opção 1</option>
-							    <option>Opção 2</option>
-							    <option>Opção 3</option>
-							</select>
+							<input type="number"  th:field="*{parcelas}"  id="parcelas" class="form-control" placeholder="Digite a quantidade de parcelas" />
 					</fieldset>
 			    
 					<fieldset>
 						<label for="datacompra" class="form-label">Data da Compra</label>
-						<input type="date"  id="datacompra" class="form-control" placeholder="0" />
+						<input type="date"  th:field="*{datacompra}"  id="datacompra" class="form-control" placeholder="0" />
 					</fieldset>
 					
 					<fieldset>
 						<label for="valor" class="form-label">Valor</label>
-						<input type="number"  id="valor" class="form-control" placeholder="DIGITE O VALOR" />
+						<input type="number"  th:field="*{valor}" step="0.01" id="valor" class="form-control" placeholder="DIGITE O VALOR" />
 					</fieldset>					
 
 					<fieldset>
 						<label for="descricao" class="form-label">Descrição</label>
-						<input type="text"  id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
+						<input type="text"  th:field="*{descricao}" id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
 					</fieldset>
 
 			        <fieldset>
-							<label for="tipodegasto" class="form-label">Tipo de Gasto</label>
-							<br>
-							<select  id="tipodegasto" class="form-select form-select-lg mb-3 p-2 col-lg" >
-							<option selected>Open this select menu</option>
-							    <option>Opção 1</option>
-							    <option>Opção 2</option>
-							    <option>Opção 3</option>
+							<label for="tipogasto" class="form-label">Tipo de Gasto</label>
+							<select  th:field="*{tipogasto}" id="tipogasto" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option 
+								th:each="tipogastoOp : ${T(br.com.tcc.financas.model.dados.TipoGasto).values()}" 
+				       			th:value="${tipogastoOp}"
+				       			th:text="${tipogastoOp.displayValue}"
+							></option>
 							</select>
 					</fieldset>
 
 			        <fieldset>
 							<label for="area" class="form-label">Area</label>
-							<br>
-							<select  id="area" class="form-select form-select-lg mb-3 p-2 col-lg" >
-							<option selected>Open this select menu</option>
-							    <option>Opção 1</option>
-							    <option>Opção 2</option>
-							    <option>Opção 3</option>
+							<select  th:field="*{area}" id="area" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option 
+								th:each="areaOp : ${T(br.com.tcc.financas.model.dados.AreaGasto).values()}" 
+				       			th:value="${areaOp}"
+				       			th:text="${areaOp.displayValue}"
+							></option>
 							</select>
 					</fieldset>
 					
 					<fieldset>
 						<label for="mes" class="form-label">Mes</label>
-						<input type="date"  id="mes" class="form-control" placeholder="DIGITE O MÊS DO GASTO" />
+						<input type="date"  th:field="*{mes}"  id="mes" class="form-control" placeholder="DIGITE O MÊS DO GASTO" />
 					</fieldset>
 
-			        <fieldset>
+			         <fieldset>
 							<label for="pessoa" class="form-label">Pessoa</label>
-							<br>
-							<select  id="pessoa" class="form-select form-select-lg mb-3 p-2 col-lg" >
-							<option selected>Open this select menu</option>
-							    <option>Opção 1</option>
-							    <option>Opção 2</option>
-							    <option>Opção 3</option>
+							<select th:field="*{pessoa}"   id="pessoa" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option 
+								th:each="pessoalist : ${pessoas}" 
+				        		th:value="${pessoalist.idpessoa}"
+				        		th:text="${pessoalist.nome}"
+				        		th:selected="${pessoalist  == gastocartaocadastro.pessoa}"
+							></option>							 
 							</select>
 					</fieldset>
 					
 					<fieldset>
 							<label for="cartao" class="form-label">Cartão</label>
-							<br>
-							<select  id="cartao" class="form-select form-select-lg mb-3 p-2 col-lg" >
-							<option selected>Open this select menu</option>
-							    <option>Opção 1</option>
-							    <option>Opção 2</option>
-							    <option>Opção 3</option>
+							<select th:field="*{cartao}"   id="cartao" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option 
+								th:each="cartaolist : ${cartoes}" 
+				        		th:value="${cartaolist.idcartao}"
+				        		th:text="${cartaolist.numero}"
+				        		th:selected="${cartaolist  == gastocartaocadastro.cartao}"
+							></option>
 							</select>
 					</fieldset>
-					<br/>
+					
 					
 					<button type="submit" class="btn btn-success">Salvar</button>
 					<a class="btn btn-secondary" href="/gastosdecartao" role="button">Cancelar</a>
