@@ -73,7 +73,7 @@
 		            <td><span th:text="${renda.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${renda.idrenda}"> Id </span></td>
 		            <td>
-		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
+		            		<a class="btn btn-success mb-3 p-1" th:href="@{/renda/{id}(id=${renda.idrenda})}" > Editar </a>
 		            	<form method="POST" th:action="@{/renda/{id}/excluir(id=${renda.idrenda})}" >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>

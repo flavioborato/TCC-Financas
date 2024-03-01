@@ -1,7 +1,7 @@
 package br.com.tcc.financas.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Calendar;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,16 +27,16 @@ public class GastosCartao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idgastoscartao;
 	private Integer parcelas;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate datacompra;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Calendar datacompra;
 	private BigDecimal valor;
 	private String descricao;
 	@Enumerated(EnumType.STRING)
 	private TipoGasto tipogasto;
 	@Enumerated(EnumType.STRING)
 	private AreaGasto area;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate mes;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Calendar mes;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Pessoa pessoa;
@@ -60,10 +60,10 @@ public class GastosCartao {
 	public void setParcelas(Integer parcelas) {
 		this.parcelas = parcelas;
 	}
-	public LocalDate getDatacompra() {
+	public Calendar getDatacompra() {
 		return datacompra;
 	}
-	public void setDatacompra(LocalDate datacompra) {
+	public void setDatacompra(Calendar datacompra) {
 		this.datacompra = datacompra;
 	}
 	public BigDecimal getValor() {
@@ -90,10 +90,10 @@ public class GastosCartao {
 	public void setArea(AreaGasto area) {
 		this.area = area;
 	}
-	public LocalDate getMes() {
+	public Calendar getMes() {
 		return mes;
 	}
-	public void setMes(LocalDate mes) {
+	public void setMes(Calendar mes) {
 		this.mes = mes;
 	}
 	public Pessoa getPessoa() {

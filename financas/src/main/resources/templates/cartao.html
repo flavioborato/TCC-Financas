@@ -81,12 +81,12 @@
 		    <tbody>
 		        <tr th:each="cartao : ${cartoes}" >
 		        	<td><span th:text="${cartao.numero}" > Numero</span> </td>
-		            <td><span th:text="${cartao.validade.month} + - ${cartao.validade.year}" > Validade </span></td>
+		            <td><span th:text="${#dates.format(cartao.validade, 'MMM/yy')}" > Validade </span></td>
 		            <td><span th:text="${cartao.tipo}" > Tipo </span></td>
 		            <td><span th:text="${cartao.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${cartao.idcartao}"> Id </span></td>
 		            <td>
-		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
+		            		<a class="btn btn-success mb-3 p-1" th:href="@{/cartao/{id}(id=${cartao.idcartao})}" > Editar </a>
 		            	<form method="POST" th:action="@{/cartao/{id}/excluir(id=${cartao.idcartao})}"  >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>

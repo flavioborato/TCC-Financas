@@ -122,17 +122,17 @@
 		    <tbody>
 		        <tr th:each="gastoscartao : ${gastoscartoes}" >
 		        	<td><span th:text="${gastoscartao.parcelas}"> Parcelas</span> </td>
-		            <td><span th:text="${gastoscartao.datacompra}"> Data da Compra </span></td>
+		            <td><span th:text="${#dates.format(gastoscartao.datacompra, 'dd/MMM/yy')}"> Data da Compra </span></td>
 		            <td><span th:text="${gastoscartao.valor}"> Valor </span></td>
 		            <td><span th:text="${gastoscartao.descricao}"> Descrição </td>
 		            <td><span th:text="${gastoscartao.tipogasto}"> Tipo de Gasto </span></td>
 		            <td><span th:text="${gastoscartao.area}"> Area </span></td>
-		            <td><span th:text="${gastoscartao.mes.month} + - ${gastoscartao.mes.year}"> Mês </span></td>
+		            <td><span th:text="${#dates.format(gastoscartao.mes, 'MMM/yyyy')}"> Mês </span></td>
 		            <td><span th:text="${gastoscartao.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${gastoscartao.cartao.numero}"> Cartão </span></td>
 		            <td><span th:text="${gastoscartao.idgastoscartao}"> Id </span></td>
 		            <td>
-		            		<a class="btn btn-success mb-3 p-1" > Editar </a>
+		            		<a class="btn btn-success mb-3 p-1" th:href="@{/gastosdecartao/{id}(id=${gastoscartao.idgastoscartao})}"> Editar </a>
 		            	<form method="POST" th:action="@{/gastosdecartao/{id}/excluir(id=${gastoscartao.idgastoscartao})}"  >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>

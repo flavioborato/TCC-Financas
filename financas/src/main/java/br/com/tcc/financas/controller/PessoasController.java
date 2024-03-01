@@ -58,9 +58,7 @@ public class PessoasController {
 		ModelAndView modelAndView = new ModelAndView("pessoas");
 		Optional<Pessoa> pessoa = pessoarepository.findById(id);
 		model.addAttribute("pessoacadastro", pessoa);
-		PageRequest paginacao = PageRequest.of(0, 20, Sort.by("idpessoa").descending()); 
-		Page<Pessoa> pessoas =   pessoarepository.findAll(paginacao);
-		model.addAttribute("pessoas", pessoas.getContent());
+		modelAndView.addObject("pessoacadastro", pessoa);
 		return modelAndView;
 	}
 	
