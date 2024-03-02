@@ -117,12 +117,12 @@
 		    <tbody>
 		        <tr  th:each="gastosmensal : ${gastosmensais}">
 		        	<td><span  th:text="${gastosmensal.tipopagamento}"> Tipo de Pagamento</span> </td>
-		            <td><span th:text="${#dates.format(gastosmensal.datacompra, 'dd/MMM/yy')}"> Data da Compra </span></td>
+		            <td><span th:text="${#temporals.format(gastosmensal.datacompra, 'dd/MMM/yy')}"> Data da Compra </span></td>
 		            <td><span th:text="${gastosmensal.valor}"> Valor </span></td>
 		            <td><span th:text="${gastosmensal.descricao}"> Descrição </td>
 		            <td><span th:text="${gastosmensal.tipogasto}"> Tipo de Gasto </span></td>
 		            <td><span th:text="${gastosmensal.area}"> Area </span></td>
-		            <td><span th:text="${#dates.format(gastosmensal.mes, 'MMM/yyy')}"> Mês </span></td>
+		            <td><span th:text="${#temporals.format(gastosmensal.mes, 'MMM/yy')}"> Mês </span></td>
 		            <td><span th:text="${gastosmensal.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${gastosmensal.idgastosmensais}"> Id </span></td>
 		            <td>

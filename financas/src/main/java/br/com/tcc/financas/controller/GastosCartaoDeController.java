@@ -51,7 +51,7 @@ public class GastosCartaoDeController {
 		}
 
 		@PostMapping("/cadastrar")
-		public ModelAndView cadastrarPessoa(@ModelAttribute("gastocartaocadastro") GastosCartao gastoscartao) {
+		public ModelAndView cadastrarGastosCartao(@ModelAttribute("gastocartaocadastro") GastosCartao gastoscartao) {
 			
 			gastoscartaorepository.save(gastoscartao);	
 			ModelAndView modelAndView = new ModelAndView("redirect:/gastosdecartao");
@@ -59,7 +59,7 @@ public class GastosCartaoDeController {
 		}
 		
 		@GetMapping("/{id}")
-		public ModelAndView exibir(@PathVariable("id") Long id, Model model) {
+		public ModelAndView editarGastosCartao(@PathVariable("id") Long id, Model model) {
 			
 			ModelAndView modelAndView = new ModelAndView("gastosdecartao");
 			Optional<GastosCartao> gastosdecartao = gastoscartaorepository.findById(id);

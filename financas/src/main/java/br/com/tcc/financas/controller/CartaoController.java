@@ -48,7 +48,7 @@ public class CartaoController {
 		
 		
 		@PostMapping("/cadastrar")
-		public ModelAndView cadastrarPessoa(@ModelAttribute("cartaocadastro") Cartao cartao) {
+		public ModelAndView cadastrarCartao(@ModelAttribute("cartaocadastro") Cartao cartao) {
 			
 			cartaorepository.save(cartao);	
 			ModelAndView modelAndView = new ModelAndView("redirect:/cartao");
@@ -56,7 +56,7 @@ public class CartaoController {
 		}
 		
 		@GetMapping("/{id}")
-		public ModelAndView exibir(@PathVariable("id") Long id, Model model) {
+		public ModelAndView editarCartao(@PathVariable("id") Long id, Model model) {
 			
 			ModelAndView modelAndView = new ModelAndView("cartao");
 			Optional<Cartao> cartao = cartaorepository.findById(id);

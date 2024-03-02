@@ -43,7 +43,7 @@ public class GastosMensaisController {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ModelAndView cadastrarPessoa(@ModelAttribute("gastomensalcadastro") GastosMensais gastosmensais) {
+	public ModelAndView cadastrarGastosMensais(@ModelAttribute("gastomensalcadastro") GastosMensais gastosmensais) {
 		
 		gastosmensaisrepository.save(gastosmensais);	
 		ModelAndView modelAndView = new ModelAndView("redirect:/gastosmensais");
@@ -51,7 +51,7 @@ public class GastosMensaisController {
 	}
 	
 	@GetMapping("/{id}")
-	public ModelAndView exibir(@PathVariable("id") Long id, Model model) {
+	public ModelAndView editarGastosMensais(@PathVariable("id") Long id, Model model) {
 		
 		ModelAndView modelAndView = new ModelAndView("gastosmensais");
 		Optional<GastosMensais> gastosmensais = gastosmensaisrepository.findById(id);

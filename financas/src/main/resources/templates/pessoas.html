@@ -20,7 +20,7 @@
 		<div class=" mb-5" >
 			<form class=" mb-3" th:action="@{/pessoas/cadastrar}" th:object="${pessoacadastro}" method="POST">   
 					<fieldset>
-						<input type="number" hidden th:field="*{idpessoa}" id="idpessoa"  class="form-control" placeholder="" />
+						<input type="number"  hidden th:field="*{idpessoa}" id="idpessoa"  class="form-control" placeholder="" />
 					</fieldset> 
 					
 					<fieldset>
@@ -35,7 +35,7 @@
 
 					<fieldset>
 						<label for="nivel" class="form-label">Nivel</label>
-						<input type="number"  th:field="*{nivel}" id="nivel" class="form-control" placeholder="DIGITE O NIVEL" />
+						<input type="number" min="1" max="2"  th:field="*{nivel}" id="nivel" class="form-control" placeholder="DIGITE O NIVEL" />
 					</fieldset>
 					
 					<fieldset>
@@ -72,9 +72,7 @@
 		            <td><span th:text="${pessoa.cpf}" > CPF </span></td>
 		            <td><span th:text="${pessoa.idpessoa}" > Id </span></td>
 		            <td>
-		            	<a class="btn btn-success mb-3 p-1" th:href="@{/pessoas/{id}(id=${pessoa.idpessoa})}">Editar</a>
-		            </td>
-		            <td>	
+		            	<a class="btn btn-success mb-3 p-1" th:href="@{/pessoas/{id}(id=${pessoa.idpessoa})}">Editar</a>	
 		            	<form method="POST" th:action="@{/pessoas/{id}/excluir(id=${pessoa.idpessoa})}">
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
 	            		</form>

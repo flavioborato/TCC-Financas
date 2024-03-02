@@ -81,7 +81,7 @@
 		    <tbody>
 		        <tr th:each="cartao : ${cartoes}" >
 		        	<td><span th:text="${cartao.numero}" > Numero</span> </td>
-		            <td><span th:text="${#dates.format(cartao.validade, 'MMM/yy')}" > Validade </span></td>
+		            <td><span th:text="${#temporals.format(cartao.validade, 'MMM/yy')}" > Validade </span></td>
 		            <td><span th:text="${cartao.tipo}" > Tipo </span></td>
 		            <td><span th:text="${cartao.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${cartao.idcartao}"> Id </span></td>

@@ -1,7 +1,7 @@
 package br.com.tcc.financas.model;
 
 
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.CascadeType;
@@ -30,7 +30,7 @@ public class Cartao {
 	private Long idcartao;
 	private Integer numero;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Calendar validade;
+	private LocalDate validade;
 	@Enumerated(EnumType.STRING)
 	private TipoCartao tipo;
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -54,10 +54,10 @@ public class Cartao {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-	public Calendar getValidade() {
+	public LocalDate getValidade() {
 		return validade;
 	}
-	public void setValidade(Calendar validade) {
+	public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
 	public TipoCartao getTipo() {

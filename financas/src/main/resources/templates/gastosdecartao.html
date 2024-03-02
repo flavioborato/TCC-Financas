@@ -23,8 +23,8 @@
 					</fieldset> 
 					
 			        <fieldset>
-							<label for="parcelas" class="form-label">Parcelas</label>
-							<input type="number"  th:field="*{parcelas}"  id="parcelas" class="form-control" placeholder="Digite a quantidade de parcelas" />
+							<label for="parcelas" class="form-label">Numero da Parcela</label>
+							<input type="number"  th:field="*{parcelas}"  id="parcelas" class="form-control" placeholder="Digite o numero da Parcela" />
 					</fieldset>
 			    
 					<fieldset>
@@ -122,12 +122,12 @@
 		    <tbody>
 		        <tr th:each="gastoscartao : ${gastoscartoes}" >
 		        	<td><span th:text="${gastoscartao.parcelas}"> Parcelas</span> </td>
-		            <td><span th:text="${#dates.format(gastoscartao.datacompra, 'dd/MMM/yy')}"> Data da Compra </span></td>
+		            <td><span th:text="${#temporals.format(gastoscartao.datacompra, 'dd/MMM/yy')}"> Data da Compra </span></td>
 		            <td><span th:text="${gastoscartao.valor}"> Valor </span></td>
 		            <td><span th:text="${gastoscartao.descricao}"> Descrição </td>
 		            <td><span th:text="${gastoscartao.tipogasto}"> Tipo de Gasto </span></td>
 		            <td><span th:text="${gastoscartao.area}"> Area </span></td>
-		            <td><span th:text="${#dates.format(gastoscartao.mes, 'MMM/yyyy')}"> Mês </span></td>
+		            <td><span th:text="${#temporals.format(gastoscartao.mes, 'MMM/yy')}"> Mês </span></td>
 		            <td><span th:text="${gastoscartao.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${gastoscartao.cartao.numero}"> Cartão </span></td>
 		            <td><span th:text="${gastoscartao.idgastoscartao}"> Id </span></td>

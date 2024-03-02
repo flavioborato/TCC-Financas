@@ -45,7 +45,7 @@ public class RendaController {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ModelAndView cadastrarPessoa(@ModelAttribute("rendacadastro") Renda renda) {
+	public ModelAndView cadastrarRenda(@ModelAttribute("rendacadastro") Renda renda) {
 		
 		rendarepository.save(renda);	
 		ModelAndView modelAndView = new ModelAndView("redirect:/renda");
@@ -53,7 +53,7 @@ public class RendaController {
 	}
 	
 	@GetMapping("/{id}")
-	public ModelAndView exibir(@PathVariable("id") Long id, Model model) {
+	public ModelAndView editarRenda(@PathVariable("id") Long id, Model model) {
 		
 		ModelAndView modelAndView = new ModelAndView("renda");
 		Optional<Renda> renda = rendarepository.findById(id);
