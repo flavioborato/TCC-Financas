@@ -25,7 +25,7 @@
 
 			    <form class=" mb-3" th:action="@{/consultas/buscarpessoa}" th:object="${consultaslista}" method="POST">
 					<fieldset>
-						<label for="data" class="form-label">Data</label>
+						<label for="data" class="form-label">Mês e Ano Correspondente</label>
 						<input type="date" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
 					</fieldset>
 					
@@ -70,7 +70,7 @@
 				        </tr>
 				    </thead>
 				    <tbody>
-				        <tr th:each=" pessoagastos : ${pessoagasto}" >
+				        <tr th:each=" pessoagastos : ${pessoagasto}" class=" text-success bg-dark text-uppercase" >
 				        	<td><span th:text="${#temporals.format(pessoagastos.mes, 'MMM/yy')}" > Data</span> </td>
 				            <td><span th:text="${pessoagastos.pessoa.nome}" >  Pessoa  </span></td>
 				            <td><span th:text="${pessoagastos.valor}" > Valor </span></td>
@@ -79,7 +79,7 @@
 				            <td><span th:text="${pessoagastos.tipogasto}">  Tipo Gasto   </span></td>
 				            
 				        </tr>
-				        <tr th:each=" pessoagastoscartao : ${pessoagastocartao}" >
+				        <tr th:each=" pessoagastoscartao : ${pessoagastocartao}" class=" text-success bg-dark text-uppercase" >
 				        	<td><span th:text="${#temporals.format(pessoagastoscartao.mes, 'MMM/yy')}" > Data</span> </td>
 				            <td><span th:text="${pessoagastoscartao.pessoa.nome}" >  Pessoa  </span></td>
 				            <td><span th:text="${pessoagastoscartao.valor}" > Valor </span></td>
@@ -101,7 +101,7 @@
 		    
 			    <form class=" mb-3" th:action="@{/consultas/buscarcartao}" th:object="${consultaslista}" method="POST">
 					<fieldset>
-						<label for="data" class="form-label">Data</label>
+						<label for="data" class="form-label">Mês e Ano Correspondente</label>
 						<input type="date" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
 					</fieldset>
 					
@@ -128,7 +128,7 @@
 						</div>
 						<div class="col d-flex justify-content-end">
 						<h3 class="form-label px-1">Total Gastos R$-</h3>
-						<h3 th:text="${totalpessoa}"  class="form-label px-1"> </h3>
+						<h3 th:text="${totalcartao}"  class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
@@ -136,7 +136,7 @@
 			
 		
 				    
-			    <table class="table table-striped table-hover">
+			    <table class="table table-striped table-hover ">
 				    <thead>
 				        <tr>
 				            <th> Data </th>
@@ -147,13 +147,12 @@
 				        </tr>
 				    </thead>
 				    <tbody>
-				        <tr >
-				        	<td><span > Data</span> </td>
-				            <td><span >  Cartão  </span></td>
-				            <td><span > Valor </span></td>
-				            <td><span > Parcelas </span></td>
-				            <td><span >  Descrição   </span></td>
-				            
+				        <tr th:each=" cartaogastocartao : ${cartaogastocartao}" class=" text-success bg-dark text-uppercase" >
+				        	<td><span th:text="${#temporals.format(cartaogastocartao.mes, 'MMM/yy')}" > Data</span> </td>
+				            <td><span th:text="${cartaogastocartao.cartao.numero}" >  Cartao  </span></td>
+				            <td><span th:text="${cartaogastocartao.valor}" > Valor </span></td>
+				            <td><span th:text="${cartaogastocartao.parcelas}">  Parcela  </span></td>
+				            <td><span th:text="${cartaogastocartao.descricao}">  Descrição   </span></td>				            
 				        </tr>
 				    </tbody>
 				</table>
@@ -171,7 +170,7 @@
 		    
 			    <form class=" mb-3" th:action="@{/consultas/buscargastosmensais}" th:object="${consultaslista}"  method="POST">
 					<fieldset>
-						<label for="data" class="form-label">Data</label>
+						<label for="data" class="form-label">Mês e Ano Correspondente</label>
 						<input type="date" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
 				</fieldset>
 						<br>
@@ -183,7 +182,7 @@
 						</div>
 						<div class="col d-flex justify-content-end">
 						<h3  class="form-label px-1">Total Gastos R$-</h3>
-						<h3  th:text="${totalpessoa}" class="form-label px-1"> </h3>
+						<h3  th:text="${totalmensal}" class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
@@ -201,11 +200,11 @@
 				        </tr>
 				    </thead>
 				    <tbody>
-				        <tr >
-				        	<td><span > Data</span> </td>
-				            <td><span > Tipo </span></td>
-				            <td><span > Valor </span></td>
-				            <td><span >  Descrição   </span></td>
+				        <tr th:each=" gastosmensais : ${gastosmensais}" class=" text-success bg-dark text-uppercase" >
+				        	<td><span th:text="${#temporals.format(gastosmensais.mes, 'MMM/yy')}" > Data</span> </td>
+				            <td><span th:text="${gastosmensais.tipopagamento}" > Tipo </span></td>
+				            <td><span th:text="${gastosmensais.valor}" > Valor </span></td>
+				            <td><span th:text="${gastosmensais.descricao}" >  Descrição   </span></td>
 				            
 				        </tr>
 				    </tbody>
@@ -225,7 +224,7 @@
 		    
 			    <form class=" mb-3" th:action="@{/consultas/buscargastoscartao}" th:object="${consultaslista}" method="POST">
 					<fieldset>
-						<label for="data" class="form-label">Data</label>
+						<label for="data" class="form-label">Mês e Ano Correspondente</label>
 						<input type="date" th:field="*{data}" id="data" class="form-control" placeholder="0" />
 					</fieldset>
 							<br>				
@@ -237,7 +236,7 @@
 						</div>
 						<div class="col d-flex justify-content-end">
 						<h3  class="form-label px-1">Total Gastos R$-</h3>
-						<h3 th:text="${totalpessoa}"  class="form-label px-1"> </h3>
+						<h3 th:text="${totalgastocartao}"  class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
@@ -255,11 +254,11 @@
 					        </tr>
 					    </thead>
 					    <tbody>
-					        <tr >
-					        	<td><span > Data</span> </td>
-					            <td><span > Area </span></td>
-					            <td><span > Valor </span></td>
-					            <td><span >  Descrição  </span></td>
+					        <tr th:each=" gastoscartao : ${gastoscartao}" class=" text-success bg-dark text-uppercase"  >
+					        	<td><span th:text="${#temporals.format(gastoscartao.mes, 'MMM/yy')}"> Data</span> </td>
+					            <td><span th:text="${gastoscartao.area}" > Area </span></td>
+					            <td><span th:text="${gastoscartao.valor}" > Valor </span></td>
+					            <td><span th:text="${gastoscartao.descricao}" >  Descrição  </span></td>
 					            
 					        </tr>
 					    </tbody>
@@ -280,7 +279,7 @@
 		    
 			    <form class=" mb-3" th:action="@{/consultas/buscartotal}" th:object="${consultaslista}" method="POST">
 					<fieldset>
-						<label for="data" class="form-label">Data</label>
+						<label for="data" class="form-label">Mês e Ano Correspondente</label>
 						<input type="date" th:field="*{data}" id="data" class="form-control" placeholder="0" />
 					</fieldset>
 							<br>			
@@ -289,18 +288,14 @@
 						<div class="col">
 							<button type="submit" class="btn btn-success">Buscar</button>
 							<a class="btn btn-secondary" href="/consultas" role="button">Limpar</a>
-						</div>
-						<div class="col d-flex justify-content-end">
-						<h3  class="form-label px-1">Total Gastos R$-</h3>
-						<h3 th:text="${totalpessoa}"  class="form-label px-1"> </h3>
-						</div>
 					</div>
 				</div>
 				</form>
 			
 		
-			<div>  
-			    <table class="table table-striped table-hover">
+			<div >  
+
+			    <table class="table table-striped table-hover" >
 				    <thead>
 				        <tr>
 				            <th> Data </th>	           
@@ -309,16 +304,17 @@
 				            <th> Disponivel </th>
 				        </tr>
 				    </thead>
-				    <tbody>
-				        <tr>
-				        	<td><span > Data</span> </td>
-				            <td><span > Valor Total </span></td>
-				            <td><span >  Valor Renda  </span></td>
-				            <td><span > Disponivel </span></td>
+				    <tbody >
+				      <tr class=" text-success bg-dark text-uppercase" th:if="${rendadto.valortotal >= 0}">
+				        	<td><span th:text="${#temporals.format(rendadto.data, 'MMM/yy')}" > Data</span> </td>
+				            <td><span th:text="${rendadto.valortotal}" > Valor Total </span></td>
+				            <td><span th:text="${rendadto.rendatotal}" >  Valor Renda  </span></td>
+				            <td><span th:text="${rendadto.disponivel}"> Disponivel </span></td>
 				            
-				        </tr>
+				        </tr> 
 				    </tbody>
 				</table>
+
 			</div>	  	
 				
 		</div>

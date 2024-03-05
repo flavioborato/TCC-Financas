@@ -15,6 +15,9 @@ public interface GastosMensaisRepository extends JpaRepository<GastosMensais, Lo
 	@Query(value = "SELECT * FROM gastos_mensais g where g.pessoa_idpessoa= :id and MONTH(mes) = :mes and YEAR(mes) = :ano", nativeQuery = true)
 	List<GastosMensais> findPessoaId(Long id, Integer mes, Integer ano);
 
+	@Query(value = "SELECT * FROM gastos_mensais g where  MONTH(mes) = :mes and YEAR(mes) = :ano", nativeQuery = true)
+	List<GastosMensais> findMensalData(Integer mes, Integer ano);
+
 
 
 }
