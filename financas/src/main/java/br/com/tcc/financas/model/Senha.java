@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name="senha")
-public class Senha {
+public class Senha  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,8 +45,10 @@ public class Senha {
 		this.pessoa = pessoa;
 	}
 	
+
 	
-	
+
+
 	
 	
 

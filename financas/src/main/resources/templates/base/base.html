@@ -24,24 +24,24 @@
 						<a class="text-reset nav-link"  href="/login">Login</a>
 					</li>
 					<li sec:authorize="isAuthenticated()" class="p-2">
-						<a onclick="document.querySelector('#form-login').submit()" class="text-reset nav-link" href="/login">Logout</a>
+						<a onclick="document.querySelector('#form-login').submit()" class="text-reset nav-link" href="#" >Logout</a>
 					</li>
 					<form id="form-login" th:action="@{/logout}" method="post"></form>					
 				</ul>
 				
 		</div>	
 	
+	
 	 
-	 
-	<div class="mb-0">
+	<div class="mb-0" >
 		<div class="col">
 			<nav class="nav">
-			  <a class="logonav nav-link" th:href="@{/consultas}">Consultas</a>
-			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/pessoas}">Cadastro Pessoa</a>
-			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/cartao}">Cadastro Cartão</a>
-			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/renda}">Cadastro Renda</a>
-			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/gastosmensais}">Cadastro Gastos Mensais</a>
-			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/gastosdecartao}">Cadastro Gastos Cartão</a>
+			  <a class="logonav nav-link" sec:authorize="isAuthenticated()" th:href="@{/consultas}">Consultas</a>
+			  <a class="logonav nav-link" sec:authorize="principal.nivel >= 3" th:href="@{/pessoas}">Cadastro Pessoa</a>
+			  <a class="logonav nav-link" sec:authorize="principal.nivel >= 2" th:href="@{/cartao}">Cadastro Cartão</a>
+			  <a class="logonav nav-link" sec:authorize="principal.nivel >= 2" th:href="@{/renda}">Cadastro Renda</a>
+			  <a class="logonav nav-link" sec:authorize="principal.nivel >= 2" th:href="@{/gastosmensais}">Cadastro Gastos Mensais</a>
+			  <a class="logonav nav-link" sec:authorize="principal.nivel >= 2" th:href="@{/gastosdecartao}">Cadastro Gastos Cartão</a>
 			</nav>
 		</div>
 	</div>

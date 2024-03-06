@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,9 @@ public class PessoasController {
 	@Autowired
 	private PessoaRepository pessoarepository;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	
 	@GetMapping
 	public String listarPessoa(Model model) {
@@ -39,14 +43,15 @@ public class PessoasController {
 	
 	
 	@PostMapping("/cadastrar")
-	public ModelAndView cadastrarPessoa(@ModelAttribute("pessoacadastro") Pessoa pessoa) {
-		
-		if (pessoa.getSenha().getSenha().isEmpty()) {
-			pessoa.getSenha().setSenha("123456");
-		}
-		
+	public ModelAndView cadastrarPessoa(@ModelAttribute("pessoacadastro") Pessoa pessoa) {		
+		String	senhaencode = "";
+		if(pessoa.getSenha().getSenha().isEmpty()){
+			senhaencode = this.passwordEncoder.encode("123456");
+		}else {
+			senhaencode = this.passwordEncoder.encode(pessoa.getSenha().getSenha());
+		}			
+		pessoa.getSenha().setSenha(senhaencode);
 		pessoa.getSenha().setPessoa(pessoa);
-
 		pessoarepository.save(pessoa);	
 		ModelAndView modelAndView = new ModelAndView("redirect:/pessoas");
 		return modelAndView;

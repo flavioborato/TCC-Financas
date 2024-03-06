@@ -8,7 +8,7 @@ import br.com.tcc.financas.model.Pessoa;
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 
-	
+	Pessoa findByNome(String nome);
 	
 
 }

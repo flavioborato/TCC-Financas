@@ -10,16 +10,19 @@ import br.com.tcc.financas.model.GastosCartao;
 import br.com.tcc.financas.model.GastosMensais;
 import br.com.tcc.financas.model.Pessoa;
 import br.com.tcc.financas.model.Renda;
-import br.com.tcc.financas.model.dados.AreaGasto;
-import br.com.tcc.financas.model.dados.TipoGasto;
 import br.com.tcc.financas.repository.GastosCartaoRepository;
 import br.com.tcc.financas.repository.GastosMensaisRepository;
 import br.com.tcc.financas.repository.RendaRepository;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 
 public class ConsultaListaDTO {
 
+	@NotBlank
+	@NotNull
 	private LocalDate data;
+	
 	private Cartao cartao;
 	private Pessoa pessoa;
 	private Double totalGastos;

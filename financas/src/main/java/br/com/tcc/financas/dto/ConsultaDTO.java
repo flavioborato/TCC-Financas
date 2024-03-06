@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import br.com.tcc.financas.model.Cartao;
 import br.com.tcc.financas.model.Pessoa;
 
-
 public class ConsultaDTO {
+
 
 	private LocalDate data;
 	private Cartao cartao;

@@ -5,16 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class LoginController {
 	
-	@GetMapping("/login")
+	@GetMapping
+	@RequestMapping("/login")
 	public String login(Model model) {
 		return "login";
 	}
 	
-	@GetMapping("/")
-	public String teste(Model model) {
+	@GetMapping
+	@RequestMapping("/")
+	public String login2(Model model) {
 		return "login";
 	}
 
