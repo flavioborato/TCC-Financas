@@ -1,3 +1,12 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Controle das consultas gerais
+ * */
+
 package br.com.tcc.financas.controller;
 
 
@@ -43,7 +52,9 @@ public class ConsultasController {
 	@Autowired
 	private RendaRepository rendarepository;
 	
-	
+	/*
+	* Classe de dados para fazer e inicialização dos atributos nas tela de consulta
+	 * */
 	public String inicializacao(Model model) {
 		
 		List<Pessoa> pessoa = pessoarepository.findAll();
@@ -58,7 +69,9 @@ public class ConsultasController {
 	}
 	
 	
-	
+		/*
+		* Carregando os dados salvos na DB ao carregar a pagina
+		 * */
 		@GetMapping
 		public String carregaDados(Model model) {
 						
@@ -67,7 +80,9 @@ public class ConsultasController {
 			return "consultas";
 		}
 
-		
+		/*
+		* Efetua busca dos gastos da pessoa selecionada dentro de um determinado mes e ano
+		 * */
 		@PostMapping("/buscarpessoa")
 		public ModelAndView buscaPorPessoa(@ModelAttribute("consultaslista") ConsultaDTO consuldaDados, Model model ) {
 			inicializacao(model);
@@ -81,7 +96,10 @@ public class ConsultasController {
 			return modelAndView;
 			
 		}
-		
+
+		/*
+		* Efetua busca dos gastos do cartão selecionada dentro de um determinado mes e ano
+		 * */		
 		@PostMapping("/buscarcartao")
 		public ModelAndView buscaPorCartao(@ModelAttribute("consultaslista")  ConsultaDTO consuldaDados, Model model  ) {
 			inicializacao(model);
@@ -93,7 +111,10 @@ public class ConsultasController {
 			return modelAndView;
 	
 }
-		
+	
+		/*
+		* Efetua busca dos gastos mensais dentro de um determinado mes e ano
+		 * */
 		@PostMapping("/buscargastosmensais")
 		public ModelAndView buscaPorGastoMensal(@ModelAttribute("consultaslista") ConsultaDTO consuldaDados, Model model  ) {
 			inicializacao(model);
@@ -106,6 +127,9 @@ public class ConsultasController {
 	
 }
 		
+		/*
+		* Efetua busca dos gastos de cartão dentro de um determinado mes e ano
+		 * */
 		@PostMapping("/buscargastoscartao")
 		public ModelAndView buscaPorGastoCartao(@ModelAttribute("consultaslista") ConsultaDTO consuldaDados, Model model  ) {
 			inicializacao(model);
@@ -118,6 +142,9 @@ public class ConsultasController {
 	
 }
 		
+		/*
+		* Efetua busca dos gastos totais dentro de um determinado mes e ano trazendo a soma total
+		 * */
 		@PostMapping("/buscartotal")
 		public ModelAndView buscaTotal(@ModelAttribute("consultaslista") ConsultaDTO consuldaDados, Model model  ) {
 			inicializacao(model);

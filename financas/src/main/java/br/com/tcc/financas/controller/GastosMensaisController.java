@@ -1,3 +1,12 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Controle dos gastos a vista mensais
+ * */
+
 package br.com.tcc.financas.controller;
 
 
@@ -30,6 +39,10 @@ public class GastosMensaisController {
 	@Autowired
 	private PessoaRepository pessoarepository;
 	
+	
+	/*
+	* Carregando os dados salvos na DB ao carregar a pagina
+	 * */
 	@GetMapping
 	public String listarGastosMensais(Model model) {
 		
@@ -42,6 +55,9 @@ public class GastosMensaisController {
 		return "gastosmensais";
 	}
 	
+	/*
+	* Recebe os dados e efetua o cadastro dos dados na DB
+	 * */
 	@PostMapping("/cadastrar")
 	public ModelAndView cadastrarGastosMensais(@ModelAttribute("gastomensalcadastro") GastosMensais gastosmensais) {
 		
@@ -50,6 +66,9 @@ public class GastosMensaisController {
 		return modelAndView;
 	}
 	
+	/*
+	* Recebe o numero do id e carrega os dados no campo para alteração na DB
+	 * */
 	@GetMapping("/{id}")
 	public ModelAndView editarGastosMensais(@PathVariable("id") Long id, Model model) {
 		
@@ -61,6 +80,9 @@ public class GastosMensaisController {
 		return modelAndView;
 	}
 	
+	/*
+	* Recebe o numero do id e apaga o dado na DB
+	 * */
 	@PostMapping("/{codigo}/excluir")
 	public ModelAndView excluirGastosMensais(@PathVariable("codigo") Long codigo) {
 		

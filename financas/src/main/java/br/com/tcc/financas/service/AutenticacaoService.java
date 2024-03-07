@@ -1,3 +1,12 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Controle de acesso
+ * */
+
 package br.com.tcc.financas.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +27,9 @@ public class AutenticacaoService implements UserDetailsService {
 	@Autowired
 	private PessoaRepository pessoarepository;
 	
-	
+	/*
+	* Recebe o pelo thymeleaf o usuario e senha e busca no banco para validação
+	 * */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Pessoa pessoa = this.pessoarepository.findByNome(username);

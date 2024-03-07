@@ -24,22 +24,22 @@
 					
 			        <fieldset>
 							<label for="parcelas" class="form-label">Numero da Parcela</label>
-							<input type="number"  th:field="*{parcelas}"  id="parcelas" class="form-control" placeholder="Digite o numero da Parcela" />
+							<input type="number" required="required" th:field="*{parcelas}"  id="parcelas" class="form-control" placeholder="Digite o numero da Parcela" />
 					</fieldset>
 			    
 					<fieldset>
 						<label for="datacompra" class="form-label">Data da Compra</label>
-						<input type="date"  th:field="*{datacompra}"  id="datacompra" class="form-control" placeholder="0" />
+						<input type="date" required="required" th:field="*{datacompra}"  id="datacompra" class="form-control" placeholder="0" />
 					</fieldset>
 					
 					<fieldset>
 						<label for="valor" class="form-label">Valor</label>
-						<input type="number"  th:field="*{valor}" step="0.01" id="valor" class="form-control" placeholder="DIGITE O VALOR" />
+						<input type="number" required="required" th:field="*{valor}" step="0.01" id="valor" class="form-control" placeholder="DIGITE O VALOR" />
 					</fieldset>					
 
 					<fieldset>
 						<label for="descricao" class="form-label">Descrição</label>
-						<input type="text"  th:field="*{descricao}" id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
+						<input type="text" required="required" th:field="*{descricao}" id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
 					</fieldset>
 
 			        <fieldset>
@@ -66,7 +66,7 @@
 					
 					<fieldset>
 						<label for="mes" class="form-label">Mes</label>
-						<input type="date"  th:field="*{mes}"  id="mes" class="form-control" placeholder="DIGITE O MÊS DO GASTO" />
+						<input type="date" required="required"  th:field="*{mes}"  id="mes" class="form-control" placeholder="DIGITE O MÊS DO GASTO" />
 					</fieldset>
 
 			         <fieldset>

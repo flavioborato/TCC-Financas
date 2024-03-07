@@ -1,3 +1,12 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Controle de entrada de dados para as consultas
+ * */
+
 package br.com.tcc.financas.dto;
 
 import java.time.LocalDate;

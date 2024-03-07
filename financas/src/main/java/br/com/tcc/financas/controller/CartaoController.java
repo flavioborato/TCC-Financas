@@ -1,3 +1,12 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Controle de cadastro dos cartões
+ * */
+
 package br.com.tcc.financas.controller;
 
 
@@ -34,6 +43,10 @@ public class CartaoController {
 	@Autowired
 	private PessoaRepository pessoarepository;
 	
+	
+		/*
+		* Carregando os dados salvos na DB ao carregar a pagina
+		 * */
 		@GetMapping
 		public String listarCartao(Model model) {
 			
@@ -46,7 +59,9 @@ public class CartaoController {
 			return "cartao";
 		}
 		
-		
+		/*
+		* Recebe os dados e efetua o cadastro dos dados na DB
+		 * */
 		@PostMapping("/cadastrar")
 		public ModelAndView cadastrarCartao(@ModelAttribute("cartaocadastro") Cartao cartao) {
 			
@@ -55,6 +70,9 @@ public class CartaoController {
 			return modelAndView;
 		}
 		
+		/*
+		* Recebe o numero do id e carrega os dados no campo para alteração na DB
+		 * */
 		@GetMapping("/{id}")
 		public ModelAndView editarCartao(@PathVariable("id") Long id, Model model) {
 			
@@ -66,6 +84,9 @@ public class CartaoController {
 			return modelAndView;
 		}
 		
+		/*
+		* Recebe o numero do id e apaga o dado na DB
+		 * */
 		@PostMapping("/{codigo}/excluir")
 		public ModelAndView excluirCartao(@PathVariable("codigo") Long codigo) {
 			

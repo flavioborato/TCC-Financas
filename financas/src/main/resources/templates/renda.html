@@ -25,12 +25,12 @@
 			    
 					<fieldset>
 						<label for="valor" class="form-label">Valor</label>
-						<input type="number" step="0.01" th:field="*{valor}" id="valor" class="form-control" placeholder="DIGITE O VALOR DA RENDA" />
+						<input type="number" required="required" step="0.01" th:field="*{valor}" id="valor" class="form-control" placeholder="DIGITE O VALOR DA RENDA" />
 					</fieldset>
 					
 					<fieldset>
 						<label for="descricao" class="form-label">Descrição</label>
-						<input type="text" th:field="*{descricao}" id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
+						<input type="text" required="required" th:field="*{descricao}" id="descricao" class="form-control" placeholder="DIGITE A DESCRIÇÃO" />
 					</fieldset>
 
 			        <fieldset>

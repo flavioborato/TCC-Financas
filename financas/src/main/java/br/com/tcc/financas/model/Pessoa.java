@@ -1,3 +1,12 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Entidade pessoa - modelo do banco de dados
+ * */
+
 package br.com.tcc.financas.model;
 
 import java.math.BigInteger;
@@ -103,6 +112,11 @@ public class Pessoa implements UserDetails {
 	public void setGastoscartao(List<GastosCartao> gastoscartao) {
 		this.gastoscartao = gastoscartao;
 	}
+	
+	/*
+	* Classes implementadas para acesso de login
+	 * */
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return List.of(new SimpleGrantedAuthority("ROLE_USER"));

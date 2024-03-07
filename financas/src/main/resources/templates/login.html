@@ -72,11 +72,11 @@
 			<form th:action="@{/login}" class="card-body" method="post">
 				<div class="form-group">
 					<label for="username">Usuario</label>
-					<input type="text" name="username" class="form-control" placeholder="Username" />
+					<input type="text" required="required" name="username" class="form-control" placeholder="Username" />
 				</div>
 				<div class="form-group">
 				    <label for="password">Senha</label>
-					<input type="password" name="password" class="form-control" placeholder="Password" />
+					<input type="password" required="required" name="password" class="form-control" placeholder="Password" />
 				</div>
 				<button class="btn btn-outline-primary" type="submit">Login</button>
 			</form>

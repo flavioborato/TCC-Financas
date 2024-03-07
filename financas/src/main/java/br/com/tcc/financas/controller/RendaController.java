@@ -1,5 +1,13 @@
-package br.com.tcc.financas.controller;
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Controle da renda
+ * */
 
+package br.com.tcc.financas.controller;
 
 
 import java.util.List;
@@ -32,6 +40,9 @@ public class RendaController {
 	@Autowired
 	private PessoaRepository pessoarepository;
 	
+	/*
+	* Carregando os dados salvos na DB ao carregar a pagina
+	 * */
 	@GetMapping
 	public String listarRenda(Model model) {
 		
@@ -44,6 +55,9 @@ public class RendaController {
 		return "renda";
 	}
 	
+	/*
+	* Recebe os dados e efetua o cadastro dos dados na DB
+	 * */
 	@PostMapping("/cadastrar")
 	public ModelAndView cadastrarRenda(@ModelAttribute("rendacadastro") Renda renda) {
 		
@@ -52,6 +66,9 @@ public class RendaController {
 		return modelAndView;
 	}
 	
+	/*
+	* Recebe o numero do id e carrega os dados no campo para alteração na DB
+	 * */
 	@GetMapping("/{id}")
 	public ModelAndView editarRenda(@PathVariable("id") Long id, Model model) {
 		
@@ -63,6 +80,9 @@ public class RendaController {
 		return modelAndView;
 	}
 	
+	/*
+	* Recebe o numero do id e apaga o dado na DB
+	 * */
 	@PostMapping("/{codigo}/excluir")
 	public ModelAndView excluirRenda(@PathVariable("codigo") Long codigo) {
 		

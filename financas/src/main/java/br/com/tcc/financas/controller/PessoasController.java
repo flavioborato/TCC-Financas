@@ -1,3 +1,12 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 03/06/2024
+ * Classe - Controle do cadastro da pessoas e usuarios
+ * */
+
 package br.com.tcc.financas.controller;
 
 
@@ -30,6 +39,9 @@ public class PessoasController {
 	private PasswordEncoder passwordEncoder;
 
 	
+	/*
+	* Carregando os dados salvos na DB ao carregar a pagina
+	 * */
 	@GetMapping
 	public String listarPessoa(Model model) {
 
@@ -41,7 +53,9 @@ public class PessoasController {
 		
 		}
 	
-	
+	/*
+	* Recebe os dados e efetua o cadastro dos dados na DB
+	 * */
 	@PostMapping("/cadastrar")
 	public ModelAndView cadastrarPessoa(@ModelAttribute("pessoacadastro") Pessoa pessoa) {		
 		String	senhaencode = "";
@@ -57,6 +71,9 @@ public class PessoasController {
 		return modelAndView;
 	}
 	
+	/*
+	* Recebe o numero do id e carrega os dados no campo para alteração na DB
+	 * */
 	@GetMapping("/{id}")
 	public ModelAndView editarPessoa(@PathVariable("id") Long id, Model model) {
 		
@@ -67,6 +84,9 @@ public class PessoasController {
 		return modelAndView;
 	}
 	
+	/*
+	* Recebe o numero do id e apaga o dado na DB
+	 * */
 	@PostMapping("/{codigo}/excluir")
 	public ModelAndView excluirPessoa(@PathVariable("codigo") Long codigo) {
 

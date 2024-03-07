@@ -24,12 +24,12 @@
 			    
 					<fieldset>
 						<label for="numero" class="form-label">Numero</label>
-						<input type="number" th:field="*{numero}"  id="numero" class="form-control" placeholder="DIGITE O NUMERO FINAL DO CARTÃO" />
+						<input type="number" required="required" th:field="*{numero}"  id="numero" class="form-control" placeholder="DIGITE O NUMERO FINAL DO CARTÃO" />
 					</fieldset>
 					
 					<fieldset>
 						<label for="validade" class="form-label">Validade</label>
-						<input type="date" th:field="*{validade}" id="validade" class="form-control" placeholder="0" />
+						<input type="date" required="required" th:field="*{validade}" id="validade" class="form-control" placeholder="0" />
 					</fieldset>					
 
 
