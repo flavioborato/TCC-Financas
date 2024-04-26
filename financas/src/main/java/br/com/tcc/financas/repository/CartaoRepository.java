@@ -3,7 +3,7 @@
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
  * Versão : 0.0
- * Revisão : 03/06/2024
+ * Revisão : 06/03/2024
  * Interface - Repositorio para acesso a DB da classe cartao
  * */
 
@@ -16,5 +16,6 @@ import br.com.tcc.financas.model.Cartao;
 
 @Repository
 public interface CartaoRepository extends JpaRepository<Cartao, Long> {
+	
 
 }

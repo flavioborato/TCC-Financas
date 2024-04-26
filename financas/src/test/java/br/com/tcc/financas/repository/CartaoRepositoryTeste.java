@@ -1,3 +1,11 @@
+/*
+ *   TCC Engenharia de Software
+ * Projeto : Cadastro de Finanças
+ * Autor : Flávio Fernando Borato
+ * Versão : 0.0
+ * Revisão : 25/04/2024
+ * Classe - Teste Repository - Cartão
+ * */
 package br.com.tcc.financas.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,6 +44,9 @@ public class CartaoRepositoryTeste {
 	private Cartao cartaoNovo;
 	private Long cartaoId;
 	
+	/*
+	* Inicialização antes dos testes
+	 * */
 	@BeforeAll
 	void incial() {
 		Pessoa pessoaCerate = new Pessoa();	
@@ -49,9 +60,12 @@ public class CartaoRepositoryTeste {
 		pessoaRepository.save(pessoaCerate);
 	}
 	
+	/*
+	* Teste de criação de dados
+	 * */
 	@Test
 	@Order(1)
-	void criaPessoaTeste() {
+	void criaCartaoTeste() {
 		Cartao cartaoCreate = new Cartao();
 		Pessoa pessoaTeste = pessoaRepository.findByNome("PessoaTeste");
 		cartaoCreate.setNumero(9999);
@@ -62,20 +76,51 @@ public class CartaoRepositoryTeste {
 		cartaoId = cartaoNovo.getIdcartao();
 	}
 	
+	/*
+	* Teste de procura de dados
+	 * */
 	@Test
 	@Order(2)
-	void findByNumeroTeste() {
-		
+	void findByIdTeste() {
+		Optional<Cartao> cartaoTeste = cartaoRepository.findById(cartaoId);
+		Pessoa pessoaTeste = pessoaRepository.findByNome("PessoaTeste");
+		assertEquals(cartaoTeste.get().getNumero(), 9999);
+		assertEquals(cartaoTeste.get().getTipo(),TipoCartao.CREDITO);
+		assertEquals(cartaoTeste.get().getValidade(),LocalDate.now());
+		assertEquals(cartaoTeste.get().getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
+	
 	}
 	
+	/*
+	* Teste de atualização dos dados
+	 * */
 	@Test
 	@Order(3)	
 	void atualizaTeste() {
-		
+		Optional<Cartao> cartaoProcura = cartaoRepository.findById(cartaoId);
+		Cartao cartaoAtualiza = cartaoProcura.get();
+		cartaoAtualiza.setNumero(9988);
+		cartaoAtualiza.setTipo(TipoCartao.AMBOS);
+		cartaoRepository.save(cartaoAtualiza);
 	}
 	
+	/*
+	* Teste de verificação da atualização dos dados
+	 * */
 	@Test
 	@Order(4)	
+	void atualizaTesteVerifica() {
+		Optional<Cartao> cartaoAtualiza = cartaoRepository.findById(cartaoId);
+		assertEquals(cartaoAtualiza.get().getNumero(), 9988);
+		assertEquals(cartaoAtualiza.get().getTipo(),TipoCartao.AMBOS);
+
+	}
+	
+	/*
+	* Teste de deletar os dados
+	 * */
+	@Test
+	@Order(5)	
 	void deleteTeste() {
 		
 		cartaoRepository.deleteById(cartaoId);
@@ -83,7 +128,9 @@ public class CartaoRepositoryTeste {
 	    assertEquals(cartaoDel,Optional.empty());
 	}
 	
-	
+	/*
+	* Finalização após os testes
+	 * */
 	@AfterAll
 	void finaliza() {
 		Pessoa pessoa = pessoaRepository.findByNome("PessoaTeste");
