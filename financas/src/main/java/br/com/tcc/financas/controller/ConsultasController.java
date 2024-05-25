@@ -2,13 +2,12 @@
  *   TCC Engenharia de Software
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
- * Versão : 0.0
- * Revisão : 06/03/2024
+ * Versão : 0.1
+ * Revisão : 24/05/2024
  * Classe - Controle das consultas gerais
  * */
 
 package br.com.tcc.financas.controller;
-
 
 
 import java.util.List;
@@ -75,8 +74,7 @@ public class ConsultasController {
 		@GetMapping
 		public String carregaDados(Model model) {
 						
-			inicializacao(model);
-			
+			inicializacao(model);		
 			return "consultas";
 		}
 
@@ -92,7 +90,7 @@ public class ConsultasController {
 			model.addAttribute("pessoagasto", pessoasgasto);
 			model.addAttribute("pessoagastocartao", pessoasgastocartao);
 			model.addAttribute("totalpessoa", "R$"+ consulta.valorTotal());
-			ModelAndView modelAndView = new ModelAndView("/consultas");									
+			ModelAndView modelAndView = new ModelAndView("/consulta/individualpessoa");									
 			return modelAndView;
 			
 		}
@@ -107,7 +105,7 @@ public class ConsultasController {
 			List<GastosCartao> cartaogastocartao = consulta.consultaGastocartaoCartao(gastoscartaorepository);
 			model.addAttribute("cartaogastocartao", cartaogastocartao);
 			model.addAttribute("totalcartao", "R$"+ consulta.valorTotal());
-			ModelAndView modelAndView = new ModelAndView("consultas");	
+			ModelAndView modelAndView = new ModelAndView("/consulta/individualcartao");	
 			return modelAndView;
 	
 }
@@ -122,7 +120,7 @@ public class ConsultasController {
 			List<GastosMensais> gastosmensais = consulta.consultaGastosMensais(gastosmensaispository);
 			model.addAttribute("gastosmensais", gastosmensais);
 			model.addAttribute("totalmensal", "R$"+ consulta.valorTotal());
-			ModelAndView modelAndView = new ModelAndView("consultas");	
+			ModelAndView modelAndView = new ModelAndView("/consulta/gastosmensais");	
 			return modelAndView;
 	
 }
@@ -137,7 +135,7 @@ public class ConsultasController {
 			List<GastosCartao> gastoscartao = consulta.consultaGastosCartao(gastoscartaorepository);
 			model.addAttribute("gastoscartao", gastoscartao);
 			model.addAttribute("totalgastocartao", "R$"+ consulta.valorTotal());	
-			ModelAndView modelAndView = new ModelAndView("consultas");
+			ModelAndView modelAndView = new ModelAndView("/consulta/gastoscartao");
 			return modelAndView;
 	
 }
@@ -148,12 +146,12 @@ public class ConsultasController {
 		@PostMapping("/buscartotal")
 		public ModelAndView buscaTotal(@ModelAttribute("consultaslista") ConsultaDTO consuldaDados, Model model  ) {
 			inicializacao(model);
-			ConsultaListaDTO consulta = new ConsultaListaDTO(consuldaDados);		
+			ConsultaListaDTO consulta = new ConsultaListaDTO(consuldaDados);	
 			RendaDTO rendaDTO = consulta.consultaTotal(gastoscartaorepository, gastosmensaispository, rendarepository);
 			model.addAttribute("rendadto", rendaDTO);
-			ModelAndView modelAndView = new ModelAndView("consultas");
+			ModelAndView modelAndView = new ModelAndView("/consulta/gastostotal");
 			return modelAndView;
-	
+				
 }
 		
 }

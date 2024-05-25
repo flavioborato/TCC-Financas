@@ -13,11 +13,15 @@
 				<!-- template  titulo  está na pasta base/base.html --->
 	</div>
   
+  <div th:replace="~{base/base :: Atalho}">
+				<!-- template  Atalho  está na pasta base/base.html - -->
+  </div>  
   
+
        <main class="container">
     	
 			
-		  <div  class=" mb-5"> 
+		  <div  class=" mb-5" id="individualPessoa"> 
 		      	<div th:replace="~{base/base :: titulo('Consulta Individual por Pessoa')}" >
 					<!-- template  titulo  está na pasta base/base.html --->
 				</div>
@@ -50,51 +54,18 @@
 							<a class="btn btn-secondary" href="/consultas" role="button">Limpar</a>
 						</div>
 						<div class="col d-flex justify-content-end">
-						<h3  class="form-label px-1" >Total Gastos:-</h3>
-						<h3  th:text="${totalpessoa}" class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
 					
 				</form>
 			    
-			    <table class="table table-striped table-hover">
-				    <thead>
-				        <tr>
-				            <th> Data </th>
-				            <th> Pessoa </th>
-				            <th> Valor </th>	           
-				            <th> Descrição  </th>
-							<th> Area  </th>
-							<th> Tipo Gasto  </th>
-				        </tr>
-				    </thead>
-				    <tbody>
-				        <tr th:each=" pessoagastos : ${pessoagasto}" class=" text-success bg-dark text-uppercase" >
-				        	<td><span th:text="${#temporals.format(pessoagastos.mes, 'MMM/yy')}" > Data</span> </td>
-				            <td><span th:text="${pessoagastos.pessoa.nome}" >  Pessoa  </span></td>
-				            <td><span th:text="${pessoagastos.valor}" > Valor </span></td>
-				            <td><span th:text="${pessoagastos.descricao}">  Descrição   </span></td>
-				            <td><span th:text="${pessoagastos.area}">  Area   </span></td>
-				            <td><span th:text="${pessoagastos.tipogasto}">  Tipo Gasto   </span></td>
-				            
-				        </tr>
-				        <tr th:each=" pessoagastoscartao : ${pessoagastocartao}" class=" text-success bg-dark text-uppercase" >
-				        	<td><span th:text="${#temporals.format(pessoagastoscartao.mes, 'MMM/yy')}" > Data</span> </td>
-				            <td><span th:text="${pessoagastoscartao.pessoa.nome}" >  Pessoa  </span></td>
-				            <td><span th:text="${pessoagastoscartao.valor}" > Valor </span></td>
-				            <td><span th:text="${pessoagastoscartao.descricao}">  Descrição   </span></td>
-				            <td><span th:text="${pessoagastoscartao.area}">  Area   </span></td>
-				            <td><span th:text="${pessoagastoscartao.tipogasto}">  Tipo Gasto   </span></td>
-				            
-				        </tr>
-				    </tbody>
-				</table>				
+					
 			</div>		
 			
 		
 		
-		  <div  class=" mb-5 "> 
+		  <div  class=" mb-5 " id="individualCartao"> 
 		   		 <div th:replace="~{base/base :: titulo('Consulta Individual por Cartão')}" >
 					<!-- template  titulo  está na pasta base/base.html --->
 				</div>
@@ -127,8 +98,6 @@
 							<a class="btn btn-secondary" href="/consultas" role="button">Limpar</a>
 						</div>
 						<div class="col d-flex justify-content-end">
-						<h3 class="form-label px-1">Total Gastos R$-</h3>
-						<h3 th:text="${totalcartao}"  class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
@@ -136,33 +105,13 @@
 			
 		
 				    
-			    <table class="table table-striped table-hover ">
-				    <thead>
-				        <tr>
-				            <th> Data </th>
-				            <th> Cartão </th>
-				            <th> Valor </th>	
-				            <th> Parcelas </th>	           
-				            <th> Descrição  </th>
-				        </tr>
-				    </thead>
-				    <tbody>
-				        <tr th:each=" cartaogastocartao : ${cartaogastocartao}" class=" text-success bg-dark text-uppercase" >
-				        	<td><span th:text="${#temporals.format(cartaogastocartao.mes, 'MMM/yy')}" > Data</span> </td>
-				            <td><span th:text="${cartaogastocartao.cartao.numero}" >  Cartao  </span></td>
-				            <td><span th:text="${cartaogastocartao.valor}" > Valor </span></td>
-				            <td><span th:text="${cartaogastocartao.parcelas}">  Parcela  </span></td>
-				            <td><span th:text="${cartaogastocartao.descricao}">  Descrição   </span></td>				            
-				        </tr>
-				    </tbody>
-				</table>
-				
+			  
 				
 				
 		</div>	
 		
 		
-		  <div  class=" mb-5"> 
+		  <div  class=" mb-5" id="gastosMensais"> 
 		  
 		      	<div th:replace="~{base/base :: titulo('Consulta total dos Gastos Mensais')}" >
 					<!-- template  titulo  está na pasta base/base.html --->
@@ -181,34 +130,13 @@
 							<a class="btn btn-secondary" href="/consultas" role="button">Limpar</a>
 						</div>
 						<div class="col d-flex justify-content-end">
-						<h3  class="form-label px-1">Total Gastos R$-</h3>
-						<h3  th:text="${totalmensal}" class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
 				</form>
 			
 		
-				    
-			    <table class="table table-striped table-hover">
-				    <thead>
-				        <tr>
-				            <th> Data </th>
-				            <th> Tipo </th>
-				            <th> Valor </th>	           
-				            <th> Descrição  </th>
-				        </tr>
-				    </thead>
-				    <tbody>
-				        <tr th:each=" gastosmensais : ${gastosmensais}" class=" text-success bg-dark text-uppercase" >
-				        	<td><span th:text="${#temporals.format(gastosmensais.mes, 'MMM/yy')}" > Data</span> </td>
-				            <td><span th:text="${gastosmensais.tipopagamento}" > Tipo </span></td>
-				            <td><span th:text="${gastosmensais.valor}" > Valor </span></td>
-				            <td><span th:text="${gastosmensais.descricao}" >  Descrição   </span></td>
-				            
-				        </tr>
-				    </tbody>
-				</table>
+		
 				
 				
 				
@@ -216,7 +144,7 @@
 		
 			
 		
-		<div  class="mb-5"> 
+		<div  class="mb-5" id="gastosCartao"> 
 		  
 				<div th:replace="~{base/base :: titulo('Consulta total dos Gastos do Cartão')}" >
 					<!-- template  titulo  está na pasta base/base.html --->
@@ -235,35 +163,12 @@
 							<a class="btn btn-secondary" href="/consultas" role="button">Limpar</a>
 						</div>
 						<div class="col d-flex justify-content-end">
-						<h3  class="form-label px-1">Total Gastos R$-</h3>
-						<h3 th:text="${totalgastocartao}"  class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
 					
 				</form>
 			
-			<div> 
-				<table class="table table-striped table-hover">
-					    <thead>
-					        <tr>
-					            <th> Data </th>
-					            <th> Area </th>
-					            <th> Valor </th>	           
-					            <th> Descrição </th>
-					        </tr>
-					    </thead>
-					    <tbody>
-					        <tr th:each=" gastoscartao : ${gastoscartao}" class=" text-success bg-dark text-uppercase"  >
-					        	<td><span th:text="${#temporals.format(gastoscartao.mes, 'MMM/yy')}"> Data</span> </td>
-					            <td><span th:text="${gastoscartao.area}" > Area </span></td>
-					            <td><span th:text="${gastoscartao.valor}" > Valor </span></td>
-					            <td><span th:text="${gastoscartao.descricao}" >  Descrição  </span></td>
-					            
-					        </tr>
-					    </tbody>
-					</table>
-			</div>
 				    
 			    
 				
@@ -271,7 +176,9 @@
 		
 		
 		
-		  <div  class="mb-5"> 
+		
+		  <div  class="mb-5"  id="gastosTotais"> 
+		  
 		  
 				<div th:replace="~{base/base :: titulo('Consulta de todos os Gastos')}" >
 					<!-- template  titulo  está na pasta base/base.html --->
@@ -293,29 +200,7 @@
 				</form>
 			
 		
-			<div >  
-
-			    <table class="table table-striped table-hover" >
-				    <thead>
-				        <tr>
-				            <th> Data </th>	           
-				            <th> Valor Total </th>
-				            <th> Valor Renda </th>
-				            <th> Disponivel </th>
-				        </tr>
-				    </thead>
-				    <tbody >
-				      <tr class=" text-success bg-dark text-uppercase" th:if="${rendadto.valortotal >= 0}">
-				        	<td><span th:text="${#temporals.format(rendadto.data, 'MMM/yy')}" > Data</span> </td>
-				            <td><span th:text="${rendadto.valortotal}" > Valor Total </span></td>
-				            <td><span th:text="${rendadto.rendatotal}" >  Valor Renda  </span></td>
-				            <td><span th:text="${rendadto.disponivel}"> Disponivel </span></td>
-				            
-				        </tr> 
-				    </tbody>
-				</table>
-
-			</div>	  	
+	  	
 				
 		</div>
 				

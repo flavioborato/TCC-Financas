@@ -86,10 +86,6 @@ public class ControlerTeste {
 	void deveRedirecionarParaConsultas() throws Exception {
 		this.mockMvc
 		.perform(MockMvcRequestBuilders.get("/consultas"))
-		.andExpect(MockMvcResultMatchers.model().attributeExists("consultaslista"))
-		.andExpect(MockMvcResultMatchers.model().attributeExists("pessoas"))
-		.andExpect(MockMvcResultMatchers.model().attributeExists("cartoes"))
-		.andExpect(MockMvcResultMatchers.model().attributeExists("rendadto"))
 		.andExpect(MockMvcResultMatchers.view().name("consultas"));
 	}
 	

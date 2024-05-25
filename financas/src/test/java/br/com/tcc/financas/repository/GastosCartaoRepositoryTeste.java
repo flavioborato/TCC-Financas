@@ -2,8 +2,8 @@
  *   TCC Engenharia de Software
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
- * Versão : 0.0
- * Revisão : 25/04/2024
+ * Versão : 0.1
+ * Revisão : 24/05/2024
  * Classe - Teste Repository - Cartão
  * */
 package br.com.tcc.financas.repository;
@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterAll;
@@ -53,7 +54,11 @@ public class GastosCartaoRepositoryTeste {
 	private Pessoa pessoaTeste;
 	private Long cartaoId;
 	private GastosCartao gastoCartaoNovo;
-	private Long gastoCartaoId;
+	private Long gastoCartaoId; 
+	private String dataTexto = "01/04/2020"; 
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private LocalDate dataTeste = LocalDate.parse(dataTexto, formatter);
+
 	
 	/*
 	* Inicialização antes dos testes
@@ -73,7 +78,7 @@ public class GastosCartaoRepositoryTeste {
 		cartaoCreate.setNumero(9999);
 		cartaoCreate.setPessoa(pessoaTeste);
 		cartaoCreate.setTipo(TipoCartao.CREDITO);
-		cartaoCreate.setValidade(LocalDate.now());
+		cartaoCreate.setValidade(dataTeste);
 		cartaoNovo = cartaoRepository.save(cartaoCreate);
 		cartaoId = cartaoNovo.getIdcartao();
 	}
@@ -88,9 +93,9 @@ public class GastosCartaoRepositoryTeste {
 		Pessoa pessoaTeste = pessoaRepository.findByNome("PessoaTeste");
 		gastosCartaoCreate.setArea(AreaGasto.CASA);
 		gastosCartaoCreate.setCartao(cartaoNovo);
-		gastosCartaoCreate.setDatacompra(LocalDate.now());
+		gastosCartaoCreate.setDatacompra(dataTeste);
 		gastosCartaoCreate.setDescricao("Gastos Cartão Teste");
-		gastosCartaoCreate.setMes(LocalDate.now());
+		gastosCartaoCreate.setMes(dataTeste);
 		gastosCartaoCreate.setPessoa(pessoaTeste);
 		gastosCartaoCreate.setParcelas(1);
 		gastosCartaoCreate.setTipogasto(TipoGasto.FAMILIAR);
@@ -105,12 +110,12 @@ public class GastosCartaoRepositoryTeste {
 	@Test
 	@Order(2)
 	void findByIdPessoaTeste() {
-		List<GastosCartao> gastosCartaoTeste = gastosCartaoRepository.findPessoaId(pessoaTeste.getIdpessoa() , LocalDate.now().getMonthValue() , LocalDate.now().getYear());
+		List<GastosCartao> gastosCartaoTeste = gastosCartaoRepository.findPessoaId(pessoaTeste.getIdpessoa() , dataTeste.getMonth().getValue() , dataTeste.getYear());
 		assertEquals(gastosCartaoTeste.get(0).getArea(),AreaGasto.CASA);
 		assertEquals(gastosCartaoTeste.get(0).getCartao().getIdcartao(),cartaoNovo.getIdcartao());
-		assertEquals(gastosCartaoTeste.get(0).getDatacompra(),LocalDate.now());
+		assertEquals(gastosCartaoTeste.get(0).getDatacompra(),dataTeste);
 		assertEquals(gastosCartaoTeste.get(0).getDescricao(),"Gastos Cartão Teste");
-		assertEquals(gastosCartaoTeste.get(0).getMes(), LocalDate.now());
+		assertEquals(gastosCartaoTeste.get(0).getMes(), dataTeste);
 		assertEquals(gastosCartaoTeste.get(0).getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
 		assertEquals(gastosCartaoTeste.get(0).getParcelas(), 1);
 		assertEquals(gastosCartaoTeste.get(0).getTipogasto(), TipoGasto.FAMILIAR);
@@ -124,12 +129,12 @@ public class GastosCartaoRepositoryTeste {
 	@Test
 	@Order(3)
 	void findByIdCartaoTeste() {
-		List<GastosCartao> gastosCartaoTeste = gastosCartaoRepository.findCartaoPeloCartao(cartaoNovo.getIdcartao() , LocalDate.now().getMonthValue() , LocalDate.now().getYear());
+		List<GastosCartao> gastosCartaoTeste = gastosCartaoRepository.findCartaoPeloCartao(cartaoNovo.getIdcartao() , dataTeste.getMonth().getValue() , dataTeste.getYear());
 		assertEquals(gastosCartaoTeste.get(0).getArea(),AreaGasto.CASA);
 		assertEquals(gastosCartaoTeste.get(0).getCartao().getIdcartao(),cartaoNovo.getIdcartao());
-		assertEquals(gastosCartaoTeste.get(0).getDatacompra(),LocalDate.now());
+		assertEquals(gastosCartaoTeste.get(0).getDatacompra(),dataTeste);
 		assertEquals(gastosCartaoTeste.get(0).getDescricao(),"Gastos Cartão Teste");
-		assertEquals(gastosCartaoTeste.get(0).getMes(), LocalDate.now());
+		assertEquals(gastosCartaoTeste.get(0).getMes(), dataTeste);
 		assertEquals(gastosCartaoTeste.get(0).getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
 		assertEquals(gastosCartaoTeste.get(0).getParcelas(), 1);
 		assertEquals(gastosCartaoTeste.get(0).getTipogasto(), TipoGasto.FAMILIAR);
@@ -143,12 +148,12 @@ public class GastosCartaoRepositoryTeste {
 	@Test
 	@Order(4)
 	void findByDataTeste() {
-		List<GastosCartao> gastosCartaoTeste = gastosCartaoRepository.findGastosCartao(LocalDate.now().getMonthValue() , LocalDate.now().getYear());
+		List<GastosCartao> gastosCartaoTeste = gastosCartaoRepository.findGastosCartao( dataTeste.getMonth().getValue() , dataTeste.getYear());
 		assertEquals(gastosCartaoTeste.get(0).getArea(),AreaGasto.CASA);
 		assertEquals(gastosCartaoTeste.get(0).getCartao().getIdcartao(),cartaoNovo.getIdcartao());
-		assertEquals(gastosCartaoTeste.get(0).getDatacompra(),LocalDate.now());
+		assertEquals(gastosCartaoTeste.get(0).getDatacompra(),dataTeste);
 		assertEquals(gastosCartaoTeste.get(0).getDescricao(),"Gastos Cartão Teste");
-		assertEquals(gastosCartaoTeste.get(0).getMes(), LocalDate.now());
+		assertEquals(gastosCartaoTeste.get(0).getMes(),dataTeste);
 		assertEquals(gastosCartaoTeste.get(0).getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
 		assertEquals(gastosCartaoTeste.get(0).getParcelas(), 1);
 		assertEquals(gastosCartaoTeste.get(0).getTipogasto(), TipoGasto.FAMILIAR);
@@ -183,11 +188,11 @@ public class GastosCartaoRepositoryTeste {
 		GastosCartao  gastosCartaoAtualizaCartao = gastosCartaoProcura.get();
 		assertEquals(gastosCartaoAtualizaCartao.getArea(),AreaGasto.DIVERSAO);
 		assertEquals(gastosCartaoAtualizaCartao.getCartao().getIdcartao(),cartaoNovo.getIdcartao());
-		assertEquals(gastosCartaoAtualizaCartao.getDatacompra(),LocalDate.now());
+		assertEquals(gastosCartaoAtualizaCartao.getDatacompra(),dataTeste);
 		assertEquals(gastosCartaoAtualizaCartao.getDescricao(),"Gastos Cartão Teste Novo");
 		assertEquals(gastosCartaoAtualizaCartao.getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
 		assertEquals(gastosCartaoAtualizaCartao.getParcelas(), 2);
-		assertEquals(gastosCartaoAtualizaCartao.getMes(), LocalDate.now());
+		assertEquals(gastosCartaoAtualizaCartao.getMes(),dataTeste);
 		assertEquals(gastosCartaoAtualizaCartao.getTipogasto(), TipoGasto.PESSOAL);
 		assertEquals(gastosCartaoAtualizaCartao.getValor(), BigDecimal.valueOf(731.89));
 

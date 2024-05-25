@@ -2,8 +2,8 @@
  *   TCC Engenharia de Software
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
- * Versão : 0.0
- * Revisão : 25/04/2024
+ * Versão : 0.1
+ * Revisão : 24/05/2024
  * Classe - Teste Repository - Cartão
  * */
 package br.com.tcc.financas.repository;
@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterAll;
@@ -49,6 +50,9 @@ public class GastosMensaisRepositoryTeste {
 	private Pessoa pessoaTeste;
 	private GastosMensais gastoMensaisNovo;
 	private Long gastoMensaisId;
+	private String dataTexto = "01/04/2020"; 
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private LocalDate dataTeste = LocalDate.parse(dataTexto, formatter);
 	
 	/*
 	* Inicialização antes dos testes
@@ -76,9 +80,9 @@ public class GastosMensaisRepositoryTeste {
 		GastosMensais gastosMensaisCreate = new GastosMensais();
 		Pessoa pessoaTeste = pessoaRepository.findByNome("PessoaTeste");
 		gastosMensaisCreate.setArea(AreaGasto.CASA);
-		gastosMensaisCreate.setDatacompra(LocalDate.now());
+		gastosMensaisCreate.setDatacompra(dataTeste);
 		gastosMensaisCreate.setDescricao("Gastos Mensais Teste");
-		gastosMensaisCreate.setMes(LocalDate.now());
+		gastosMensaisCreate.setMes(dataTeste);
 		gastosMensaisCreate.setPessoa(pessoaTeste);
 		gastosMensaisCreate.setTipogasto(TipoGasto.FAMILIAR);
 		gastosMensaisCreate.setValor(BigDecimal.valueOf(540.23));
@@ -92,11 +96,11 @@ public class GastosMensaisRepositoryTeste {
 	@Test
 	@Order(2)
 	void findByIdPessoaTeste() {
-		List<GastosMensais> gastosMensaisTeste = gastosMensaisRepository.findPessoaId(pessoaTeste.getIdpessoa() , LocalDate.now().getMonthValue() , LocalDate.now().getYear());
+		List<GastosMensais> gastosMensaisTeste = gastosMensaisRepository.findPessoaId(pessoaTeste.getIdpessoa() ,  dataTeste.getMonth().getValue() , dataTeste.getYear());
 		assertEquals(gastosMensaisTeste.get(0).getArea(),AreaGasto.CASA);
-		assertEquals(gastosMensaisTeste.get(0).getDatacompra(),LocalDate.now());
+		assertEquals(gastosMensaisTeste.get(0).getDatacompra(),dataTeste);
 		assertEquals(gastosMensaisTeste.get(0).getDescricao(),"Gastos Mensais Teste");
-		assertEquals(gastosMensaisTeste.get(0).getMes(), LocalDate.now());
+		assertEquals(gastosMensaisTeste.get(0).getMes(), dataTeste);
 		assertEquals(gastosMensaisTeste.get(0).getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
 		assertEquals(gastosMensaisTeste.get(0).getTipogasto(), TipoGasto.FAMILIAR);
 		assertEquals(gastosMensaisTeste.get(0).getValor(), BigDecimal.valueOf(540.23));
@@ -111,11 +115,11 @@ public class GastosMensaisRepositoryTeste {
 	@Test
 	@Order(3)
 	void findByDataTeste() {
-		List<GastosMensais> gastosMensaisTeste = gastosMensaisRepository.findMensalData(LocalDate.now().getMonthValue() , LocalDate.now().getYear());
+		List<GastosMensais> gastosMensaisTeste = gastosMensaisRepository.findMensalData( dataTeste.getMonth().getValue() , dataTeste.getYear());
 		assertEquals(gastosMensaisTeste.get(0).getArea(),AreaGasto.CASA);
-		assertEquals(gastosMensaisTeste.get(0).getDatacompra(),LocalDate.now());
+		assertEquals(gastosMensaisTeste.get(0).getDatacompra(),dataTeste);
 		assertEquals(gastosMensaisTeste.get(0).getDescricao(),"Gastos Mensais Teste");
-		assertEquals(gastosMensaisTeste.get(0).getMes(), LocalDate.now());
+		assertEquals(gastosMensaisTeste.get(0).getMes(),dataTeste);
 		assertEquals(gastosMensaisTeste.get(0).getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
 		assertEquals(gastosMensaisTeste.get(0).getTipogasto(), TipoGasto.FAMILIAR);
 		assertEquals(gastosMensaisTeste.get(0).getValor(), BigDecimal.valueOf(540.23));
@@ -147,10 +151,10 @@ public class GastosMensaisRepositoryTeste {
 		Optional<GastosMensais> gastosMensaisProcura = gastosMensaisRepository.findById(gastoMensaisId);
 		GastosMensais  gastosMensaisAtualizaCartao = gastosMensaisProcura.get();
 		assertEquals(gastosMensaisAtualizaCartao.getArea(),AreaGasto.DIVERSAO);
-		assertEquals(gastosMensaisAtualizaCartao.getDatacompra(),LocalDate.now());
+		assertEquals(gastosMensaisAtualizaCartao.getDatacompra(),dataTeste);
 		assertEquals(gastosMensaisAtualizaCartao.getDescricao(),"Gastos Mensais Teste Novo");
 		assertEquals(gastosMensaisAtualizaCartao.getPessoa().getIdpessoa(), pessoaTeste.getIdpessoa());
-		assertEquals(gastosMensaisAtualizaCartao.getMes(), LocalDate.now());
+		assertEquals(gastosMensaisAtualizaCartao.getMes(),dataTeste);
 		assertEquals(gastosMensaisAtualizaCartao.getTipogasto(), TipoGasto.PESSOAL);
 		assertEquals(gastosMensaisAtualizaCartao.getValor(), BigDecimal.valueOf(731.89));
 
