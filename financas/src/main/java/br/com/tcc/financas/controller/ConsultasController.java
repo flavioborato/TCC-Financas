@@ -3,13 +3,16 @@
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
  * Versão : 0.1
- * Revisão : 24/05/2024
+ * Revisão : 29/05/2024
  * Classe - Controle das consultas gerais
  * */
 
 package br.com.tcc.financas.controller;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import br.com.tcc.financas.dto.AlertasDTO;
 import br.com.tcc.financas.dto.ConsultaDTO;
 import br.com.tcc.financas.dto.ConsultaListaDTO;
 import br.com.tcc.financas.dto.RendaDTO;
@@ -55,26 +60,49 @@ public class ConsultasController {
 	* Classe de dados para fazer e inicialização dos atributos nas tela de consulta
 	 * */
 	public String inicializacao(Model model) {
-		
+	
 		List<Pessoa> pessoa = pessoarepository.findAll();
 		List<Cartao> cartao = cartaorepository.findAll();
 		RendaDTO rendaDTO = new RendaDTO();
 		model.addAttribute("rendadto", rendaDTO);
 		model.addAttribute("consultaslista", new ConsultaDTO());
 		model.addAttribute("pessoas", pessoa);
-		model.addAttribute("cartoes", cartao);		
+		model.addAttribute("cartoes", cartao);	
 		return null;
 		
 	}
 	
-	
+	/*
+	* Classe consluta das parcelas a vencer dos Gastos Mensais, e exibir status na tela
+	 * */
+	public String verificacaoVencimentoGastoMensal(Model model) {
+		
+		List<Long> idGastosMensais = new ArrayList<>();
+		LocalDate data = LocalDate.now();
+		AlertasDTO alertas = new AlertasDTO();
+		
+		List<GastosMensais> gastosmensais = gastosmensaispository.findMensalData(data.getMonth().getValue(),data.getYear());
+		//Percorre a lista para identificar as datas de vencimento
+		for (GastosMensais gastosFor : gastosmensais) {
+			if (gastosFor.getDatacompra().getDayOfMonth() <= (data.getDayOfMonth() + 3) && 
+					gastosFor.getDatacompra().getDayOfMonth() >= data.getDayOfMonth() ) 
+			{alertas.setAlertaMesAtual(1);
+			 idGastosMensais.add(gastosFor.getIdgastosmensais());
+			}			
+		}
+		alertas.setIdMesAtual(idGastosMensais);
+		model.addAttribute("alertas", alertas);
+		return null;
+		
+	}	
 		/*
 		* Carregando os dados salvos na DB ao carregar a pagina
 		 * */
 		@GetMapping
 		public String carregaDados(Model model) {
 						
-			inicializacao(model);		
+			inicializacao(model);
+			verificacaoVencimentoGastoMensal(model);
 			return "consultas";
 		}
 

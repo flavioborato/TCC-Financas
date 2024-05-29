@@ -102,11 +102,7 @@
 					</div>
 				</div>
 				</form>
-			
-		
-				    
-			  
-				
+					
 				
 		</div>	
 		
@@ -205,12 +201,19 @@
 		</div>
 				
 	</main>  
-  
-  
 
-  
     <div th:replace="~{base/base :: rodape}" >
 				<!-- template  rodapé  está na pasta base/base.html - -->
 	</div>
+	
+	<!-- Variaveis de transferencia para o Script, pasta static/script/alertas.js - -->
+	<div>
+		<input type="hidden" id="alertaMesAtual" th:value="${alertas.alertaMesAtual}" />
+		
+		<input  id="alertaListaId"  th:value="${alertas.idMesAtual}"/>
+	</div>
+	
+	<script th:src="@{/script/alertas.js}"></script>
+
 </body>
 </html>
