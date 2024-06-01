@@ -209,8 +209,11 @@
 	<!-- Variaveis de transferencia para o Script, pasta static/script/alertas.js - -->
 	<div>
 		<input type="hidden" id="alertaMesAtual" th:value="${alertas.alertaMesAtual}" />
-		
-		<input  id="alertaListaId"  th:value="${alertas.idMesAtual}"/>
+		<input type="hidden" id="alertaListaIdAtual"  th:value="${alertas.idMesAtual}"/>
+		<input type="hidden" id="alertaMesProximo" th:value="${alertas.alertaMesProximo}" />
+		<input type="hidden" id="alertaListaIdProximo"  th:value="${alertas.idMesProximo}"/>
+		<input type="hidden" id="alertaListaDataAtual"  th:value="${alertas.dataMesAtual}"/>
+		<input type="hidden" id="alertaListaDataProximo"  th:value="${alertas.dataMesProximo}"/>
 	</div>
 	
 	<script th:src="@{/script/alertas.js}"></script>

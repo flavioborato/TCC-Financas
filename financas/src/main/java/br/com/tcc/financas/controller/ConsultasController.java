@@ -3,16 +3,12 @@
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
  * Versão : 0.1
- * Revisão : 29/05/2024
+ * Revisão : 01/06/2024
  * Classe - Controle das consultas gerais
  * */
 
 package br.com.tcc.financas.controller;
-
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.time.LocalTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import br.com.tcc.financas.dto.AlertasDTO;
 import br.com.tcc.financas.dto.ConsultaDTO;
 import br.com.tcc.financas.dto.ConsultaListaDTO;
@@ -56,6 +51,9 @@ public class ConsultasController {
 	@Autowired
 	private RendaRepository rendarepository;
 	
+	private Integer verificaAlerta = 0;
+	private Integer minuto = 0;
+
 	/*
 	* Classe de dados para fazer e inicialização dos atributos nas tela de consulta
 	 * */
@@ -71,26 +69,30 @@ public class ConsultasController {
 		return null;
 		
 	}
+	/*
+	* Classe verificar tempo de gerar alertas
+	 * */
+	public String verificaTempoDeAleta() {
+		
+		LocalTime horaAtual = LocalTime.now();
+		if(this.verificaAlerta==0) {
+			this.minuto = horaAtual.getMinute()+5;
+			this.verificaAlerta=1;
+		}	
+		if(this.minuto <= horaAtual.getMinute()) {
+			this.verificaAlerta=0;
+		}		
+		return null;	
+	}
 	
 	/*
 	* Classe consluta das parcelas a vencer dos Gastos Mensais, e exibir status na tela
 	 * */
 	public String verificacaoVencimentoGastoMensal(Model model) {
-		
-		List<Long> idGastosMensais = new ArrayList<>();
-		LocalDate data = LocalDate.now();
+
 		AlertasDTO alertas = new AlertasDTO();
-		
-		List<GastosMensais> gastosmensais = gastosmensaispository.findMensalData(data.getMonth().getValue(),data.getYear());
-		//Percorre a lista para identificar as datas de vencimento
-		for (GastosMensais gastosFor : gastosmensais) {
-			if (gastosFor.getDatacompra().getDayOfMonth() <= (data.getDayOfMonth() + 3) && 
-					gastosFor.getDatacompra().getDayOfMonth() >= data.getDayOfMonth() ) 
-			{alertas.setAlertaMesAtual(1);
-			 idGastosMensais.add(gastosFor.getIdgastosmensais());
-			}			
-		}
-		alertas.setIdMesAtual(idGastosMensais);
+		alertas = alertas.alertaVencimentoGastoMensal(gastosmensaispository, this.verificaAlerta);
+		verificaTempoDeAleta();
 		model.addAttribute("alertas", alertas);
 		return null;
 		
@@ -100,7 +102,6 @@ public class ConsultasController {
 		 * */
 		@GetMapping
 		public String carregaDados(Model model) {
-						
 			inicializacao(model);
 			verificacaoVencimentoGastoMensal(model);
 			return "consultas";
