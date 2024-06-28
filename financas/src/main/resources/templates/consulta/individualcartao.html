@@ -48,7 +48,7 @@
 				    </thead>
 				    <tbody>
 				        <tr th:each=" cartaogastocartao : ${cartaogastocartao}" class=" text-success bg-dark text-uppercase" >
-				        	<td><span th:text="${#temporals.format(cartaogastocartao.mes, 'MMM/yy')}" > Data</span> </td>
+				        	<td><span th:text="${#temporals.format(cartaogastocartao.datacompra, 'dd/MM/yy')}" > Data</span> </td>
 				            <td><span th:text="${cartaogastocartao.cartao.numero}" >  Cartao  </span></td>
 				            <td><span th:text="${cartaogastocartao.valor}" > Valor </span></td>
 				            <td><span th:text="${cartaogastocartao.parcelas}">  Parcela  </span></td>

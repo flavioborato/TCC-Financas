@@ -50,7 +50,7 @@
 				    </thead>
 				    <tbody>
 				        <tr th:each=" pessoagastos : ${pessoagasto}" class=" text-success bg-dark text-uppercase" >
-				        	<td><span th:text="${#temporals.format(pessoagastos.mes, 'MMM/yy')}" > Data</span> </td>
+				        	<td><span th:text="${#temporals.format(pessoagastos.datacompra, 'dd/MM/yy')}" > Data</span> </td>
 				            <td><span th:text="${pessoagastos.pessoa.nome}" >  Pessoa  </span></td>
 				            <td><span th:text="${pessoagastos.valor}" > Valor </span></td>
 				            <td><span th:text="${pessoagastos.descricao}">  Descrição   </span></td>
