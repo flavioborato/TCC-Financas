@@ -2,8 +2,8 @@
  *   TCC Engenharia de Software
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
- * Versão : 0.0
- * Revisão : 06/03/2024
+ * Versão : 0.1
+ * Revisão : 17/07/2024
  * Classe - Controle dos gastos a vista mensais
  * */
 
@@ -74,6 +74,21 @@ public class GastosMensaisController {
 		
 		ModelAndView modelAndView = new ModelAndView("gastosmensais");
 		Optional<GastosMensais> gastosmensais = gastosmensaisrepository.findById(id);
+		List<Pessoa> pessoa = pessoarepository.findAll();
+		model.addAttribute("gastomensalcadastro", gastosmensais.get());
+		model.addAttribute("pessoas", pessoa);
+		return modelAndView;
+	}
+	
+	/*
+	* Recebe o numero do id e carrega os dados no campo para copiar os dados na DB
+	 * */
+	@GetMapping("/{id}/copiar")
+	public ModelAndView copiarGastosMensais(@PathVariable("id") Long id, Model model) {
+		
+		ModelAndView modelAndView = new ModelAndView("gastosmensais");
+		Optional<GastosMensais> gastosmensais = gastosmensaisrepository.findById(id);
+		gastosmensais.get().setIdgastosmensais(null);
 		List<Pessoa> pessoa = pessoarepository.findAll();
 		model.addAttribute("gastomensalcadastro", gastosmensais.get());
 		model.addAttribute("pessoas", pessoa);

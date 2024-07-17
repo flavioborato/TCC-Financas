@@ -119,7 +119,7 @@ public class ConsultasController {
 			model.addAttribute("pessoagasto", pessoasgasto);
 			model.addAttribute("pessoagastocartao", pessoasgastocartao);
 			model.addAttribute("totalpessoa", "R$"+ consulta.valorTotal());
-			ModelAndView modelAndView = new ModelAndView("/consulta/individualpessoa");									
+			ModelAndView modelAndView = new ModelAndView("consulta/individualpessoa");									
 			return modelAndView;
 			
 		}
@@ -134,7 +134,7 @@ public class ConsultasController {
 			List<GastosCartao> cartaogastocartao = consulta.consultaGastocartaoCartao(gastoscartaorepository);
 			model.addAttribute("cartaogastocartao", cartaogastocartao);
 			model.addAttribute("totalcartao", "R$"+ consulta.valorTotal());
-			ModelAndView modelAndView = new ModelAndView("/consulta/individualcartao");	
+			ModelAndView modelAndView = new ModelAndView("consulta/individualcartao");	
 			return modelAndView;
 	
 }
@@ -149,7 +149,7 @@ public class ConsultasController {
 			List<GastosMensais> gastosmensais = consulta.consultaGastosMensais(gastosmensaispository);
 			model.addAttribute("gastosmensais", gastosmensais);
 			model.addAttribute("totalmensal", "R$"+ consulta.valorTotal());
-			ModelAndView modelAndView = new ModelAndView("/consulta/gastosmensais");	
+			ModelAndView modelAndView = new ModelAndView("consulta/gastosmensais");	
 			return modelAndView;
 	
 }
@@ -164,7 +164,7 @@ public class ConsultasController {
 			List<GastosCartao> gastoscartao = consulta.consultaGastosCartao(gastoscartaorepository);
 			model.addAttribute("gastoscartao", gastoscartao);
 			model.addAttribute("totalgastocartao", "R$"+ consulta.valorTotal());	
-			ModelAndView modelAndView = new ModelAndView("/consulta/gastoscartao");
+			ModelAndView modelAndView = new ModelAndView("consulta/gastoscartao");
 			return modelAndView;
 	
 }
@@ -178,7 +178,7 @@ public class ConsultasController {
 			ConsultaListaDTO consulta = new ConsultaListaDTO(consuldaDados);	
 			RendaDTO rendaDTO = consulta.consultaTotal(gastoscartaorepository, gastosmensaispository, rendarepository);
 			model.addAttribute("rendadto", rendaDTO);
-			ModelAndView modelAndView = new ModelAndView("/consulta/gastostotal");
+			ModelAndView modelAndView = new ModelAndView("consulta/gastostotal");
 			return modelAndView;
 				
 }

@@ -21,12 +21,12 @@
 		<div class=" mb-5" >
 			<form class=" mb-3" th:action="@{/gastosdecartao/cadastrar}" th:object="${gastocartaocadastro}" method="POST">
 			   		 <fieldset>
-						<input type="number" hidden th:field="*{idgastoscartao}" id="idgastoscartao"  class="form-control" placeholder="DIGITE O NOME" />
+						<input type="number" hidden th:field="*{idgastoscartao}" id="idgastoscartao"  class="form-control" placeholder="DIGITE O ID" />
 					</fieldset> 
 					
 			        <fieldset>
-							<label for="parcelas" class="form-label">Numero da Parcela</label>
-							<input type="number" required="required" th:field="*{parcelas}"  id="parcelas" class="form-control" placeholder="Digite o numero da Parcela" />
+							<label for="parcelas" class="form-label">Quantidade de Parcelas</label>
+							<input type="number" required="required" th:field="*{parcelas}"  id="parcelas" class="form-control" placeholder="Digite a Quantidade de Parcelas" />
 					</fieldset>
 			    
 					<fieldset>
@@ -108,7 +108,7 @@
 		<table class="table table-striped table-hover">
 		    <thead>
 		        <tr>
-		            <th> Parcelas </th>
+		            <th> Parcela </th>
 		            <th> Data da Compra </th>
 		            <th> Valor </th>
 		            <th> Descrição </th>

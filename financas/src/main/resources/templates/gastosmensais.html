@@ -20,7 +20,7 @@
 		<div class=" mb-5" >
 			<form class=" mb-3" th:action="@{/gastosmensais/cadastrar}" th:object="${gastomensalcadastro}"  method="POST">
 			    	<fieldset>
-						<input type="number" hidden th:field="*{idgastosmensais}" id="idgastosmensais"  class="form-control" placeholder="DIGITE O NOME" />
+						<input type="number" hidden th:field="*{idgastosmensais}" id="idgastosmensais"  class="form-control" placeholder="DIGITE O ID" />
 					</fieldset> 
 					
 			        <fieldset>
@@ -127,10 +127,13 @@
 		            <td><span th:text="${gastosmensal.pessoa.nome}"> Pessoa </span></td>
 		            <td><span th:text="${gastosmensal.idgastosmensais}"> Id </span></td>
 		            <td>
-		            		<a class="btn btn-success mb-3 p-1" th:href="@{/gastosmensais/{id}(id=${gastosmensal.idgastosmensais})}"> Editar </a>
+		            	<a class="btn btn-success mb-3 p-1" th:href="@{/gastosmensais/{id}(id=${gastosmensal.idgastosmensais})}"> Editar </a>
 		            	<form method="POST" th:action="@{/gastosmensais/{id}/excluir(id=${gastosmensal.idgastosmensais})}"  >
 	            			<button type="submit" class="btn btn-danger p-1"> Excluir </button>
-	            		</form>
+	            		</form>		         
+		            </td>
+		            <td>
+		            	<a class="btn btn-primary mb-1 p-1" th:href="@{/gastosmensais/{id}/copiar(id=${gastosmensal.idgastosmensais})}"> Copiar </a>
 	            	</td>
 		        </tr>
 		    </tbody>
