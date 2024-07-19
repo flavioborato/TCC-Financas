@@ -40,6 +40,7 @@
 				    <thead>
 				        <tr>
 				            <th> Data </th>
+				            <th> Pessoa </th>
 				            <th> Tipo </th>
 				            <th> Valor </th>	           
 				            <th> Descrição  </th>
@@ -48,6 +49,7 @@
 				    <tbody>
 				        <tr th:each=" gastosmensais : ${gastosmensais}" class=" text-success bg-dark text-uppercase" >
 				        	<td><span th:text="${#temporals.format(gastosmensais.datacompra, 'dd/MM/yy')}" > Data</span> </td>
+				        	<td><span th:text="${gastosmensais.pessoa.nome}" >  Pessoa  </span></td>
 				            <td><span th:text="${gastosmensais.tipopagamento}" > Tipo </span></td>
 				            <td><span th:text="${gastosmensais.valor}" > Valor </span></td>
 				            <td><span th:text="${gastosmensais.descricao}" >  Descrição   </span></td>

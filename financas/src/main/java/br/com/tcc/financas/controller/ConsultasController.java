@@ -2,8 +2,8 @@
  *   TCC Engenharia de Software
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
- * Versão : 0.1
- * Revisão : 01/06/2024
+ * Versão : 0.2
+ * Revisão : 18/07/2024
  * Classe - Controle das consultas gerais
  * */
 

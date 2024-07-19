@@ -3,7 +3,7 @@
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
  * Versão : 0.1
- * Revisão : 06/03/2024
+ * Revisão : 17/07/2024
  * Classe - Controle dos gastos efetuados pelo cartão
  * */
 

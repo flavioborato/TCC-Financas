@@ -32,7 +32,7 @@ public class ConsultaListaDTO {
 	@NotBlank
 	@NotNull
 	private LocalDate data;
-	
+	private String tipogasto;
 	private Cartao cartao;
 	private Pessoa pessoa;
 	private Double totalGastos;
@@ -43,6 +43,7 @@ public class ConsultaListaDTO {
 		this.data = consulta.getData();
 		this.pessoa = consulta.getPessoa();
 		this.cartao = consulta.getCartao();
+		this.tipogasto = consulta.getTipogasto();
 		
 	}
 	
@@ -55,7 +56,7 @@ public class ConsultaListaDTO {
 		this.somaGastoMensal = 0.0;
 		if (this.data != null) {
 			pessoasgasto = gastosmensaispository.findPessoaId(this.pessoa.getIdpessoa(),
-											this.data.getMonthValue(), this.data.getYear());
+											this.data.getMonthValue(), this.data.getYear(), this.tipogasto);
 			for (GastosMensais gastosMensais : pessoasgasto) {
 				this.somaGastoMensal += gastosMensais.getValor().doubleValue(); 
 			} 
@@ -73,7 +74,7 @@ public class ConsultaListaDTO {
 		this.somaGastoCartao = 0.0;
 		if (this.data != null) {
 			pessoasgasto = gastoscartaorepository.findPessoaId(this.pessoa.getIdpessoa(),
-					this.data.getMonthValue(), this.data.getYear());
+					this.data.getMonthValue(), this.data.getYear(), this.tipogasto);
 			for (GastosCartao gastosCartao : pessoasgasto) {
 				this.somaGastoCartao += gastosCartao.getValor().doubleValue(); 
 			} 

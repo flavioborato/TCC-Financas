@@ -96,7 +96,7 @@ public class GastosMensaisRepositoryTeste {
 	@Test
 	@Order(2)
 	void findByIdPessoaTeste() {
-		List<GastosMensais> gastosMensaisTeste = gastosMensaisRepository.findPessoaId(pessoaTeste.getIdpessoa() ,  dataTeste.getMonth().getValue() , dataTeste.getYear());
+		List<GastosMensais> gastosMensaisTeste = gastosMensaisRepository.findPessoaId(pessoaTeste.getIdpessoa() ,  dataTeste.getMonth().getValue() , dataTeste.getYear(),"FAMILIAR");
 		assertEquals(gastosMensaisTeste.get(0).getArea(),AreaGasto.CASA);
 		assertEquals(gastosMensaisTeste.get(0).getDatacompra(),dataTeste);
 		assertEquals(gastosMensaisTeste.get(0).getDescricao(),"Gastos Mensais Teste");

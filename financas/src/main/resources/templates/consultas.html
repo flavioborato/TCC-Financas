@@ -45,7 +45,16 @@
 							    
 							</select>
 					</fieldset>
-					
+					<fieldset>
+							<label for="tipogasto" class="form-label">Tipo de Gasto</label>
+							<select  th:field="*{tipogasto}" id="tipogasto" class="form-select form-select-lg mb-3 p-2 col-lg" >
+							<option 
+								th:each="tipogastoOp : ${T(br.com.tcc.financas.model.dados.TipoGasto).values()}" 
+				       			th:value="${tipogastoOp}"
+				       			th:text="${tipogastoOp.displayValue}"
+							></option>
+							</select>
+					</fieldset>
 					<br/>
 				<div class="container">
 					<div class="row align-items-start">

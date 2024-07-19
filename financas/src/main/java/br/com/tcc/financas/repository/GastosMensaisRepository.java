@@ -21,8 +21,8 @@ import br.com.tcc.financas.model.GastosMensais;
 @Repository
 public interface GastosMensaisRepository extends JpaRepository<GastosMensais, Long> {
 	
-	@Query(value = "SELECT * FROM gastos_mensais g where g.pessoa_idpessoa= :id and MONTH(mes) = :mes and YEAR(mes) = :ano", nativeQuery = true)
-	List<GastosMensais> findPessoaId(Long id, Integer mes, Integer ano);
+	@Query(value = "SELECT * FROM gastos_mensais g where g.pessoa_idpessoa= :id  and MONTH(mes) = :mes and YEAR(mes) = :ano and g.tipogasto= :tipogastos", nativeQuery = true)
+	List<GastosMensais> findPessoaId(Long id, Integer mes, Integer ano ,String tipogastos);
 
 	@Query(value = "SELECT * FROM gastos_mensais g where  MONTH(mes) = :mes and YEAR(mes) = :ano", nativeQuery = true)
 	List<GastosMensais> findMensalData(Integer mes, Integer ano);
