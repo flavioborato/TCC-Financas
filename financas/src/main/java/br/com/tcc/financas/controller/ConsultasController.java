@@ -118,7 +118,7 @@ public class ConsultasController {
 			List<GastosCartao> pessoasgastocartao = consulta.consultaGastocartaoPessoa(gastoscartaorepository);			
 			model.addAttribute("pessoagasto", pessoasgasto);
 			model.addAttribute("pessoagastocartao", pessoasgastocartao);
-			model.addAttribute("totalpessoa", "R$"+ consulta.valorTotal());
+			model.addAttribute("totalpessoa", consulta.valorTotal());
 			ModelAndView modelAndView = new ModelAndView("consulta/individualpessoa");									
 			return modelAndView;
 			
@@ -133,7 +133,7 @@ public class ConsultasController {
 			ConsultaListaDTO consulta = new ConsultaListaDTO(consuldaDados);
 			List<GastosCartao> cartaogastocartao = consulta.consultaGastocartaoCartao(gastoscartaorepository);
 			model.addAttribute("cartaogastocartao", cartaogastocartao);
-			model.addAttribute("totalcartao", "R$"+ consulta.valorTotal());
+			model.addAttribute("totalcartao", consulta.valorTotal());
 			ModelAndView modelAndView = new ModelAndView("consulta/individualcartao");	
 			return modelAndView;
 	
@@ -148,7 +148,7 @@ public class ConsultasController {
 			ConsultaListaDTO consulta = new ConsultaListaDTO(consuldaDados);
 			List<GastosMensais> gastosmensais = consulta.consultaGastosMensais(gastosmensaispository);
 			model.addAttribute("gastosmensais", gastosmensais);
-			model.addAttribute("totalmensal", "R$"+ consulta.valorTotal());
+			model.addAttribute("totalmensal", consulta.valorTotal());
 			ModelAndView modelAndView = new ModelAndView("consulta/gastosmensais");	
 			return modelAndView;
 	
@@ -163,7 +163,7 @@ public class ConsultasController {
 			ConsultaListaDTO consulta = new ConsultaListaDTO(consuldaDados);
 			List<GastosCartao> gastoscartao = consulta.consultaGastosCartao(gastoscartaorepository);
 			model.addAttribute("gastoscartao", gastoscartao);
-			model.addAttribute("totalgastocartao", "R$"+ consulta.valorTotal());	
+			model.addAttribute("totalgastocartao", consulta.valorTotal());	
 			ModelAndView modelAndView = new ModelAndView("consulta/gastoscartao");
 			return modelAndView;
 	

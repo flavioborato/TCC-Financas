@@ -2,8 +2,8 @@
  *   TCC Engenharia de Software
  * Projeto : Cadastro de Finanças
  * Autor : Flávio Fernando Borato
- * Versão : 0.0
- * Revisão : 06/03/2024
+ * Versão : 0.1
+ * Revisão : 19/07/2024
  * Classe - Controle de cada tipo de consulta efetuada e dados dos valores
  * */
 
@@ -12,6 +12,7 @@ package br.com.tcc.financas.dto;
 
 
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import br.com.tcc.financas.model.GastosCartao;
 import br.com.tcc.financas.model.GastosMensais;
 import br.com.tcc.financas.model.Pessoa;
 import br.com.tcc.financas.model.Renda;
+import br.com.tcc.financas.model.dados.AreaGasto;
 import br.com.tcc.financas.repository.GastosCartaoRepository;
 import br.com.tcc.financas.repository.GastosMensaisRepository;
 import br.com.tcc.financas.repository.RendaRepository;
@@ -145,6 +147,17 @@ public class ConsultaListaDTO {
 		Double somaCartao = 0.0;
 		Double somaMensal = 0.0;
 		Double somaRenda = 0.0;
+		Double diversao = 0.0;
+		Double comida = 0.0;
+		Double limpeza= 0.0;
+		Double estudo= 0.0;
+		Double saude= 0.0;
+		Double locomocao= 0.0;
+		Double presente= 0.0;
+		Double bebida= 0.0;
+		Double casa= 0.0;
+		Double vestuario= 0.0;
+		Double outros= 0.0;
 		if (this.data != null) {	
 			List<GastosCartao> gastocartao =  gastoscartaorepository.findGastosCartao(this.data.getMonthValue(), this.data.getYear());
 			List<GastosMensais>	gastomensal = gastosmensaispository.findMensalData(this.data.getMonthValue(), this.data.getYear());
@@ -152,14 +165,93 @@ public class ConsultaListaDTO {
 			
 			for (GastosCartao gastosCartao : gastocartao) {
 				somaCartao += gastosCartao.getValor().doubleValue(); 
+				
+				if(gastosCartao.getArea() == AreaGasto.DIVERSAO) {
+					diversao += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.COMIDA) {
+					comida += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.LIMPEZA) {
+					limpeza += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.ESTUDO) {
+					estudo += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.SAUDE) {
+					saude += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.LOCOMOCAO) {
+					locomocao += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.PRESENTES) {
+					presente += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.BEBIDA) {
+					bebida += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.CASA) {
+					casa += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.VESTUARIO) {
+					vestuario += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.OUTROS) {
+					outros += gastosCartao.getValor().doubleValue();
+				}
 			} 
 			for (GastosMensais gastosMensal : gastomensal) {
 				somaMensal += gastosMensal.getValor().doubleValue(); 
+				
+				if(gastosMensal.getArea() == AreaGasto.DIVERSAO) {
+					diversao += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.COMIDA) {
+					comida += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.LIMPEZA) {
+					limpeza += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.ESTUDO) {
+					estudo += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.SAUDE) {
+					saude += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.LOCOMOCAO) {
+					locomocao += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.PRESENTES) {
+					presente += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.BEBIDA) {
+					bebida += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.CASA) {
+					casa += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.VESTUARIO) {
+					vestuario += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.OUTROS) {
+					outros += gastosMensal.getValor().doubleValue();
+				}
 			} 
 			for (Renda gastosRenda : renda) {
 				somaRenda += gastosRenda.getValor().doubleValue(); 
 			} 
 			
+			rendaDto.setDiversao(diversao);
+			rendaDto.setComida(comida);
+			rendaDto.setLimpeza(limpeza);
+			rendaDto.setEstudo(estudo);
+			rendaDto.setSaude(saude);
+			rendaDto.setLocomocao(locomocao);
+			rendaDto.setPresente(presente);
+			rendaDto.setBebida(bebida);
+			rendaDto.setCasa(casa);
+			rendaDto.setVestuario(vestuario);
+			rendaDto.setOutros(outros);
 			rendaDto.setValortotal(somaCartao+somaMensal);
 			rendaDto.setData(this.data);
 			rendaDto.setRendatotal(somaRenda);

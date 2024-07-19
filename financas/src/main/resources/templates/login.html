@@ -7,7 +7,7 @@
 		crossorigin="anonymous">
 	<style>
 .Titulo{
-		background-color: #47bcff;
+		
 		color: rgb(0, 0, 0);
 		font-size: 1.2rem;
 		font-family: 'Handlee', inherit;
@@ -48,6 +48,8 @@
   	<div class="logo-container mb-3 p-2 d-flex justify-content-between">	
 				<span class="logo ml-5 p-2">Finanças</span> 
 				
+				<h1 class="Titulo mb-3 p-4 d-flex justify-content-center">LOGIN</h1>
+				
 				<ul class="d-flex flex-row ulLink ">
 					<li sec:authorize="isAnonymous()" class="p-2">
 						<a class="text-reset nav-link"  href="/login">Login</a>
@@ -59,11 +61,6 @@
 				</ul>
 				
 		</div>
-  
-  	<div th:replace="~{base/base :: titulo('LOGIN')}" >
-				<!-- template  titulo  está na pasta base/base.html --->
-	</div>
-  
   
   		<div class="container">
 			<div  ></div>
@@ -89,7 +86,7 @@
 		<p>Desenvolvido por <a href="">Flávio Fernando Borato</a>.</p>
 		<ul class="ulLink" >
 	    </ul>
-	    <p>V1.3</p>
+	    <p>V1.4</p>
 	</main>
 </footer>
 </div>

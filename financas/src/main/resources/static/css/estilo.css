@@ -1,10 +1,15 @@
+.TituloPrincipal{
+		color: rgb(0, 0, 0);
+		font-size: 1.2rem;
+		font-family: 'Handlee', inherit;
+}
+
 .Titulo{
 		background-color: #47bcff;
 		color: rgb(0, 0, 0);
 		font-size: 1.2rem;
 		font-family: 'Handlee', inherit;
 }
-
 .Titulodiv{
 	background-color:   rgb(0, 0, 0);
 }

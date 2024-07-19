@@ -5,14 +5,9 @@
 </head>
  
 <body>
-  <div th:replace="~{base/base :: logo}">
+  <div th:replace="~{base/base :: logo('CONSULTAS')}">
 				<!-- template  logo  está na pasta base/base.html - -->
   </div>
-  
-  	<div th:replace="~{base/base :: titulo('CONSULTAS')}" >
-				<!-- template  titulo  está na pasta base/base.html --->
-	</div>
-  
 
        <main class="container">
     	
@@ -30,7 +25,7 @@
 						</div>
 						<div class="col d-flex justify-content-end">
 						<h3  class="form-label px-1">Total Gastos R$-</h3>
-						<h3  th:text="${totalmensal}" class="form-label px-1"> </h3>
+						<h3  th:text="${#numbers.formatDecimal(totalmensal, 2, 2)}" class="form-label px-1"> </h3>
 						</div>
 					</div>
 				</div>
