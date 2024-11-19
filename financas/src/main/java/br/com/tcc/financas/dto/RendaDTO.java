@@ -28,9 +28,27 @@ public class RendaDTO {
 	private Double casa;
 	private Double vestuario;
 	private Double outros;
+	private Double terceiros;
+	private Double trabalho;
 	
 	
 	
+
+	public Double getTerceiros() {
+		return terceiros;
+	}
+
+	public void setTerceiros(Double terceiros) {
+		this.terceiros = terceiros;
+	}
+
+	public Double getTrabalho() {
+		return trabalho;
+	}
+
+	public void setTrabalho(Double trabalho) {
+		this.trabalho = trabalho;
+	}
 
 	public LocalDate getData() {
 		return data;

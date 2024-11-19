@@ -1,3 +1,12 @@
+// Para adicionar novas variaveis é necessario declarar
+// a variavel no Java em RendaDTO, chamar ela pela input no HTML do Renda DTO
+// e entrar no Java em ConsultaListaDTO e adicionar a soma
+// e adicionar a constante na tabela abaixo usando document.getElementById
+// depois dividir por 1 e colocar em nova variavel, para valor se tornar numerico
+// e inserir no campo do grafico
+
+
+
 const diversao = document.getElementById("diversao").value;    
 const comida = document.getElementById("comida").value; 
 const limpeza = document.getElementById("limpeza").value; 
@@ -9,6 +18,9 @@ const bebida = document.getElementById("bebida").value;
 const casa = document.getElementById("casa").value; 
 const vestuario = document.getElementById("vestuario").value; 
 const outros = document.getElementById("outros").value; 
+const terceiros = document.getElementById("terceiros").value; 
+const trabalho = document.getElementById("trabalho").value; 
+
            
   
             const vardiversao = diversao/1;
@@ -22,6 +34,11 @@ const outros = document.getElementById("outros").value;
             const varcasa = casa/1;
             const varvestuario = vestuario/1;
             const varoutros= outros/1;
+            const varterceiros= terceiros/1;
+            const vartrabalho= trabalho/1;
+            
+            
+
           google.charts.load("current", {packages:["corechart"]});
           google.charts.setOnLoadCallback(drawChart);
           function drawChart() {
@@ -37,7 +54,9 @@ const outros = document.getElementById("outros").value;
               ['BebidaR$:- '+ varbebida.toFixed(2),    varbebida],
               ['CasaR$:- '+ varcasa.toFixed(2),    varcasa],
               ['VestuarioR$:- '+ varvestuario.toFixed(2),    varvestuario],
-              ['Outros diversosR$:- '+ varoutros.toFixed(2),    varoutros]
+              ['Outros diversosR$:- '+ varoutros.toFixed(2),    varoutros],
+              ['TerceirosR$:- '+ varterceiros.toFixed(2),    varterceiros],
+              ['TrabalhoR$:- '+ vartrabalho.toFixed(2),    vartrabalho]
             ]);
     
             var options = {

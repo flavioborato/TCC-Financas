@@ -20,7 +20,9 @@ public enum AreaGasto {
 	BEBIDA("Bebida"),
 	CASA("Casa"),
 	VESTUARIO("Vestuario"),	
-	OUTROS("Outros diversos");
+	OUTROS("Outros diversos"),
+	TERCEIROS("Terceiros"),
+	TRABALHO("Trabalho");
 	
 	
 	private final String displayValue;

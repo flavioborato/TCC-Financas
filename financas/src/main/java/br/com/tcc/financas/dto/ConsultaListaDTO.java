@@ -158,6 +158,8 @@ public class ConsultaListaDTO {
 		Double casa= 0.0;
 		Double vestuario= 0.0;
 		Double outros= 0.0;
+		Double terceiros=0.0;
+		Double trabalho=0.0;
 		if (this.data != null) {	
 			List<GastosCartao> gastocartao =  gastoscartaorepository.findGastosCartao(this.data.getMonthValue(), this.data.getYear());
 			List<GastosMensais>	gastomensal = gastosmensaispository.findMensalData(this.data.getMonthValue(), this.data.getYear());
@@ -199,6 +201,12 @@ public class ConsultaListaDTO {
 				if(gastosCartao.getArea() == AreaGasto.OUTROS) {
 					outros += gastosCartao.getValor().doubleValue();
 				}
+				if(gastosCartao.getArea() == AreaGasto.TERCEIROS) {
+					terceiros += gastosCartao.getValor().doubleValue();
+				}
+				if(gastosCartao.getArea() == AreaGasto.TRABALHO) {
+					trabalho += gastosCartao.getValor().doubleValue();
+				}
 			} 
 			for (GastosMensais gastosMensal : gastomensal) {
 				somaMensal += gastosMensal.getValor().doubleValue(); 
@@ -236,6 +244,12 @@ public class ConsultaListaDTO {
 				if(gastosMensal.getArea() == AreaGasto.OUTROS) {
 					outros += gastosMensal.getValor().doubleValue();
 				}
+				if(gastosMensal.getArea() == AreaGasto.TERCEIROS) {
+					terceiros += gastosMensal.getValor().doubleValue();
+				}
+				if(gastosMensal.getArea() == AreaGasto.TRABALHO) {
+					trabalho += gastosMensal.getValor().doubleValue();
+				}
 			} 
 			for (Renda gastosRenda : renda) {
 				somaRenda += gastosRenda.getValor().doubleValue(); 
@@ -252,14 +266,14 @@ public class ConsultaListaDTO {
 			rendaDto.setCasa(casa);
 			rendaDto.setVestuario(vestuario);
 			rendaDto.setOutros(outros);
+			rendaDto.setTerceiros(terceiros);
+			rendaDto.setTrabalho(trabalho);
 			rendaDto.setValortotal(somaCartao+somaMensal);
 			rendaDto.setData(this.data);
 			rendaDto.setRendatotal(somaRenda);
 			rendaDto.setDisponivel(somaRenda - (somaCartao+somaMensal) );
 			
 		}
-		
-		
 		
 		
 		return rendaDto;
