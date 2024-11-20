@@ -26,9 +26,11 @@
 		    
 
 			    <form class=" mb-3" th:action="@{/consultas/buscarpessoa}" th:object="${consultaslista}" method="POST">
+			  			    
+			   		    
 					<fieldset>
 						<label for="data" class="form-label">Mês e Ano Correspondente</label>
-						<input type="date" required="required" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
+						<input    required="required" th:field="*{data}"  id="data"  class="form-control" placeholder="0" />
 					</fieldset>
 					
 			        <fieldset>
@@ -80,7 +82,7 @@
 			    <form class=" mb-3" th:action="@{/consultas/buscarcartao}" th:object="${consultaslista}" method="POST">
 					<fieldset>
 						<label for="data" class="form-label">Mês e Ano Correspondente</label>
-						<input type="date" required="required" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
+						<input  required="required" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
 					</fieldset>
 					
 			        <fieldset>
@@ -123,7 +125,7 @@
 			    <form class=" mb-3" th:action="@{/consultas/buscargastosmensais}" th:object="${consultaslista}"  method="POST">
 					<fieldset>
 						<label for="data" class="form-label">Mês e Ano Correspondente</label>
-						<input type="date" required="required" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
+						<input  required="required" th:field="*{data}"  id="data" class="form-control" placeholder="0" />
 				</fieldset>
 						<br>
 				<div class="container">
@@ -156,7 +158,7 @@
 			    <form class=" mb-3" th:action="@{/consultas/buscargastoscartao}" th:object="${consultaslista}" method="POST">
 					<fieldset>
 						<label for="data" class="form-label">Mês e Ano Correspondente</label>
-						<input type="date" required="required" th:field="*{data}" id="data" class="form-control" placeholder="0" />
+						<input  required="required" th:field="*{data}" id="data" class="form-control" placeholder="0" />
 					</fieldset>
 							<br>				
 				<div class="container">
@@ -190,7 +192,7 @@
 			    <form class=" mb-3" th:action="@{/consultas/buscartotal}" th:object="${consultaslista}" method="POST">
 					<fieldset>
 						<label for="data" class="form-label">Mês e Ano Correspondente</label>
-						<input type="date" required="required" th:field="*{data}" id="data" class="form-control" placeholder="0" />
+						<input required="required" th:field="*{data}" id="data" class="form-control" placeholder="0" />
 					</fieldset>
 							<br>			
 				<div class="container">

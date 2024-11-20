@@ -37,16 +37,18 @@
 					            <th> Data </th>
 					            <th> Pessoa </th>
 					            <th> Area </th>
-					            <th> Valor </th>	           
+					            <th> Valor </th>
+					            <th> Parcelas </th>	  	           
 					            <th> Descrição </th>
 					        </tr>
 					    </thead>
 					    <tbody>
 					        <tr th:each=" gastoscartao : ${gastoscartao}" class=" text-success bg-dark text-uppercase"  >
-					        	<td><span th:text="${#temporals.format(gastoscartao.datacompra, 'dd/MM/yy')}"> Data</span> </td>
+					        	<td><span th:text="${#temporals.format(gastoscartao.datacompra, 'dd/MM/yy')}"> Data </span> </td>
 					        	<td><span th:text="${gastoscartao.pessoa.nome}" >  Pessoa  </span></td>
 					            <td><span th:text="${gastoscartao.area}" > Area </span></td>
 					            <td><span th:text="${gastoscartao.valor}" > Valor </span></td>
+					            <td><span th:text="${gastoscartao.parcelas}">  Parcela  </span></td>
 					            <td><span th:text="${gastoscartao.descricao}" >  Descrição  </span></td>
 					            
 					        </tr>

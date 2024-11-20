@@ -8,7 +8,9 @@
  * */
 
 package br.com.tcc.financas.controller;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,13 +59,23 @@ public class ConsultasController {
 	/*
 	* Classe de dados para fazer e inicialização dos atributos nas tela de consulta
 	 * */
-	public String inicializacao(Model model) {
 	
+	
+	public String inicializacao(Model model) {
+		LocalDate horaAtual = LocalDate.now();
+		LocalDate dataSend = horaAtual;		
+		dataSend = dataSend.of(2024,11, 20);
+		if (horaAtual.getDayOfMonth() >= 13 ){
+			dataSend = dataSend.plusMonths(1);
+		}
+		
 		List<Pessoa> pessoa = pessoarepository.findAll();
 		List<Cartao> cartao = cartaorepository.findAll();
 		RendaDTO rendaDTO = new RendaDTO();
+		ConsultaDTO consulta = new ConsultaDTO();
+		consulta.setData(dataSend);
 		model.addAttribute("rendadto", rendaDTO);
-		model.addAttribute("consultaslista", new ConsultaDTO());
+		model.addAttribute("consultaslista", consulta);
 		model.addAttribute("pessoas", pessoa);
 		model.addAttribute("cartoes", cartao);	
 		return null;

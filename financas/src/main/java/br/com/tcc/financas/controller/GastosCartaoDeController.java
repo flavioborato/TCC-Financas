@@ -10,6 +10,7 @@
 package br.com.tcc.financas.controller;
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,13 +51,22 @@ public class GastosCartaoDeController {
 		 * */
 		@GetMapping
 		public String listarGastosCartao(Model model) {
+			LocalDate horaAtual = LocalDate.now();
+			LocalDate dataSend = horaAtual;		
+			dataSend = dataSend.of(horaAtual.getYear(),horaAtual.getMonth(), 20);
+			if (horaAtual.getDayOfMonth() >= 13 ){
+				dataSend = dataSend.plusMonths(1);
+			}
 			
+			GastosCartao gastos = new GastosCartao();
+			gastos.setDatacompra(horaAtual);
+			gastos.setMes(dataSend);
 			PageRequest paginacao = PageRequest.of(0, 200, Sort.by("idgastoscartao").descending()); 
 			Page<GastosCartao> gastoscartao = gastoscartaorepository.findAll(paginacao);
 			List<Pessoa> pessoa = pessoarepository.findAll();
 			List<Cartao> cartao = cartaorepository.findAll();
 			model.addAttribute("gastoscartoes", gastoscartao.getContent());
-			model.addAttribute("gastocartaocadastro", new GastosCartao());
+			model.addAttribute("gastocartaocadastro", gastos);
 			model.addAttribute("pessoas", pessoa);
 			model.addAttribute("cartoes", cartao);
 			return "gastosdecartao";

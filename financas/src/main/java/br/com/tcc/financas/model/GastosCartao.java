@@ -36,7 +36,7 @@ public class GastosCartao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idgastoscartao;
 	private Integer parcelas;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate datacompra;
 	private BigDecimal valor;
 	private String descricao;
@@ -44,7 +44,7 @@ public class GastosCartao {
 	private TipoGasto tipogasto;
 	@Enumerated(EnumType.STRING)
 	private AreaGasto area;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate mes;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore

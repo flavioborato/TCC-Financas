@@ -39,7 +39,7 @@ public class GastosMensais {
 	private Long idgastosmensais;
 	@Enumerated(EnumType.STRING)
 	private TipoPagamento tipopagamento;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate datacompra;
 	private BigDecimal valor;
 	private String descricao;
@@ -47,7 +47,7 @@ public class GastosMensais {
 	private TipoGasto tipogasto;
 	@Enumerated(EnumType.STRING)
 	private AreaGasto area;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate mes;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
